@@ -1,0 +1,18 @@
+= Schedule I Mods
+
+* link:CopHealthModifier/[Cop Health Modifier] - Adds a configurable multiplier
+  value to adjust police max health.
+* link:DayLengthModifier/[Day Length Modifier] - Adds a configurable multiplier
+  value to adjust game day length.
+* link:DisableDealBonuses/[Disable Deal Bonuses] - Removes the bonus payments
+  on deals for quality, curfew, quick delivery, and weather.
+* link:DonutMixFix/[Donut Mixing Fix] - Corrects the mixing interaction with
+  `CalorieDense + CalorieDense`.
+* link:GrowthSpeedModifier/[Plant Growth Speed Modifiers] - Adds configurable
+  multiplier values per plant type to adjust the growth speed of those plants.
+* link:GunControl/[Gun Control] - Marks guns and ammunition as illegal.
+* link:IllegalSeeds/[Illegal Seeds] - Marks coca and marijuana seeds as illegal.
+* link:ObservantCops/[Observant Cops] - Makes cops notice when the player is
+  openly holding an illegal item.
+* link:RecommendedPrice/[Recommended Price] - Adds configurable multiplier
+  values to adjust the market price of the different drug types.
