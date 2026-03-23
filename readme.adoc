@@ -1,18 +1,48 @@
 = Schedule I Mods
 
-* link:CopHealthModifier/[Cop Health Modifier] - Adds a configurable multiplier
-  value to adjust police max health.
-* link:DayLengthModifier/[Day Length Modifier] - Adds a configurable multiplier
-  value to adjust game day length.
-* link:DisableDealBonuses/[Disable Deal Bonuses] - Removes the bonus payments
-  on deals for quality, curfew, quick delivery, and weather.
-* link:DonutMixFix/[Donut Mixing Fix] - Corrects the mixing interaction with
-  `CalorieDense + CalorieDense`.
-* link:GrowthSpeedModifier/[Plant Growth Speed Modifiers] - Adds configurable
-  multiplier values to adjust the growth speed of different plant types.
-* link:GunControl/[Gun Control] - Marks guns and ammunition as illegal.
-* link:IllegalSeeds/[Illegal Seeds] - Marks coca and marijuana seeds as illegal.
-* link:ObservantCops/[Observant Cops] - Makes cops notice when the player is
-  openly holding an illegal item.
-* link:RecommendedPrice/[Recommended Price] - Adds configurable multiplier
-  values to adjust the market price of the different drug types.
+A collection of tiny mods to tweak to the gameplay experience.
+
+[cols="2,1,7"]
+|===
+| Mod | Type | Description
+
+| link:CopHealthModifier/[Cop Health Modifier]
+| Difficulty
+| Adds a configurable multiplier value to adjust police max health.
+
+| link:DayLengthModifier/[Day Length Modifier]
+| Difficulty
+| Adds a configurable multiplier value to adjust game day length.
+
+| link:DisableDealBonuses/[Disable Deal Bonuses]
+| Difficulty
+| Removes the bonus payments on deals for quality, curfew, quick delivery, and
+  weather.
+
+| link:DonutMixFix/[Donut Mixing Fix]
+| Fix
+| Corrects the mixing interaction with `CalorieDense + CalorieDense`.
+
+| link:GrowthSpeedModifier/[Plant Growth Modifiers]
+| Difficulty
+| Adds configurable multiplier values to adjust the growth speed of different
+  plant types.
+
+| link:GunControl/[Gun Control]
+| Difficulty
+| Marks guns and ammunition as illegal.
+
+| link:IllegalSeeds/[Illegal Seeds]
+| Difficulty
+| Marks coca and marijuana seeds as illegal.
+
+| link:ObservantCops/[Observant Cops]
+| Difficulty
+| Makes cops notice when the player is openly holding an illegal item.
+
+| link:RecommendedPrice/[Recommended Price]
+| Difficulty
+| Adds configurable multiplier values to adjust the market price of the
+  different drug types.
+|===
+
