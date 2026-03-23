@@ -9,7 +9,7 @@
 * link:DonutMixFix/[Donut Mixing Fix] - Corrects the mixing interaction with
   `CalorieDense + CalorieDense`.
 * link:GrowthSpeedModifier/[Plant Growth Speed Modifiers] - Adds configurable
-  multiplier values per plant type to adjust the growth speed of those plants.
+  multiplier values to adjust the growth speed of different plant types.
 * link:GunControl/[Gun Control] - Marks guns and ammunition as illegal.
 * link:IllegalSeeds/[Illegal Seeds] - Marks coca and marijuana seeds as illegal.
 * link:ObservantCops/[Observant Cops] - Makes cops notice when the player is
