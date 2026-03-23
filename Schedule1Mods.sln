@@ -1,0 +1,36 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{32f4908b-f530-4e0e-9cd6-d89473ee821a}") = "CopHealthModifier", "CopHealthModifier/CopHealthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{43b2da6d-2b83-4ecb-ad8a-538fd16d26c4}") = "DayLengthModifier", "DayLengthModifier/DayLengthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{39857026-bbab-4d95-b383-68be4639721f}") = "DisableDealBonuses", "DisableDealBonuses/DisableDealBonuses.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{43f26f1c-a117-4e37-b82a-3438d3bc6baa}") = "DonutMixFix", "DonutMixFix/DonutMixFix.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{4943d58f-3b8b-48b8-b4c3-2df1f56aae87}") = "GrowthSpeedModifier", "GrowthSpeedModifier/GrowthSpeedModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{c7c1fc04-ad78-4075-a882-f88b5ee8b86f}") = "GunControl", "GunControl/GunControl.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{8644f7cf-7bd7-4ea7-95f2-9eefbe1f4324}") = "IllegalSeeds", "IllegalSeeds/IllegalSeeds.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{cdee1d7b-04fc-4bd0-a9d7-675fd2eec6fb}") = "ObservantCops", "ObservantCops/ObservantCops.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecommendedPrice", "RecommendedPrice/RecommendedPrice.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Il2Cpp|Debug|Any CPU = Debug|Any CPU
+		Il2Cpp|Release|Any CPU = Release|Any CPU
+		Mono|Debug|Any CPU = Debug|Any CPU
+		Mono|Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Il2Cpp|Any CPU.ActiveCfg = Il2Cpp|Any CPU
+		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Il2Cpp|Any CPU.Build.0 = Il2Cpp|Any CPU
+		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Mono|Any CPU.ActiveCfg = Mono|Any CPU
+		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Mono|Any CPU.Build.0 = Mono|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,3 @@
+= Schedule I - Day Length Modifier
+
+Adds a configurable multiplier to adjust speed at which plants grow.

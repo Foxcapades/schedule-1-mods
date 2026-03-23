@@ -1,0 +1,3 @@
+= Schedule I - Cop Health Modifier
+
+Adds a configurable multiplier to adjust the health of cops.

@@ -1,0 +1,10 @@
+.env
+.envrc
+.idea/
+
+bin/
+obj/
+target/
+
+local.build.props
+
