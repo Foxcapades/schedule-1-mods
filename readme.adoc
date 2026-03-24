@@ -44,5 +44,9 @@ A collection of tiny mods to tweak to the gameplay experience.
 | Difficulty
 | Adds configurable multiplier values to adjust the market price of the
   different drug types.
+
+| link:TrashCanCapacity/[Trash Can Capacity]
+| QOL
+| Adjusts trash can capacity.
 |===
 

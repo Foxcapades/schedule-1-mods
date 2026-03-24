@@ -6,3 +6,7 @@ build-all:
 	@for i in $(PROJECTS); do \
 		$(MAKE) -C $$i PROJECT_ID=$$i CONFIGURATION=$(CONFIGURATION) build; \
 	done
+
+.PHONY: install
+install:
+	@$(MAKE) -C $(PROJECT) PROJECT_ID=$(PROJECT) install

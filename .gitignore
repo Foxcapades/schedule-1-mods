@@ -7,4 +7,4 @@ obj/
 target/
 
 local.build.props
-
+*.user

@@ -1,0 +1,23 @@
+<Project>
+  <Import Project="../Schedule1Mods.csproj"/>
+
+  <PropertyGroup>
+    <RootNamespace>TrashCanCapacity</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Il2Cpp|AnyCPU' ">
+    <OutputPath>bin\Il2Cpp\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mono|AnyCPU' ">
+    <OutputPath>bin\Mono\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug | Mono|AnyCPU' ">
+    <OutputPath>bin\Debug | Mono\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug | Il2Cpp|AnyCPU' ">
+    <OutputPath>bin\Debug | Il2Cpp\</OutputPath>
+  </PropertyGroup>
+</Project>

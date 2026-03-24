@@ -1,28 +1,28 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{32f4908b-f530-4e0e-9cd6-d89473ee821a}") = "CopHealthModifier", "CopHealthModifier/CopHealthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{32F4908B-F530-4E0E-9CD6-D89473EE821A}") = "CopHealthModifier", "CopHealthModifier/CopHealthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{43b2da6d-2b83-4ecb-ad8a-538fd16d26c4}") = "DayLengthModifier", "DayLengthModifier/DayLengthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{43B2DA6D-2B83-4ECB-AD8A-538FD16D26C4}") = "DayLengthModifier", "DayLengthModifier/DayLengthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{39857026-bbab-4d95-b383-68be4639721f}") = "DisableDealBonuses", "DisableDealBonuses/DisableDealBonuses.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{39857026-BBAB-4D95-B383-68BE4639721F}") = "DisableDealBonuses", "DisableDealBonuses/DisableDealBonuses.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{43f26f1c-a117-4e37-b82a-3438d3bc6baa}") = "DonutMixFix", "DonutMixFix/DonutMixFix.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{43F26F1C-A117-4E37-B82A-3438D3BC6BAA}") = "DonutMixFix", "DonutMixFix/DonutMixFix.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{4943d58f-3b8b-48b8-b4c3-2df1f56aae87}") = "GrowthSpeedModifier", "GrowthSpeedModifier/GrowthSpeedModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{4943D58F-3B8B-48B8-B4C3-2DF1F56AAE87}") = "GrowthSpeedModifier", "GrowthSpeedModifier/GrowthSpeedModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{c7c1fc04-ad78-4075-a882-f88b5ee8b86f}") = "GunControl", "GunControl/GunControl.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{C7C1FC04-AD78-4075-A882-F88B5EE8B86F}") = "GunControl", "GunControl/GunControl.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{8644f7cf-7bd7-4ea7-95f2-9eefbe1f4324}") = "IllegalSeeds", "IllegalSeeds/IllegalSeeds.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{8644F7CF-7BD7-4EA7-95F2-9EEFBE1F4324}") = "IllegalSeeds", "IllegalSeeds/IllegalSeeds.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{cdee1d7b-04fc-4bd0-a9d7-675fd2eec6fb}") = "ObservantCops", "ObservantCops/ObservantCops.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{CDEE1D7B-04FC-4BD0-A9D7-675FD2EEC6FB}") = "ObservantCops", "ObservantCops/ObservantCops.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecommendedPrice", "RecommendedPrice/RecommendedPrice.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
+Project("{B0D97353-EAD4-4DC6-8C29-536A3AB031B6}") = "TrashCanCapacity", "TrashCanCapacity/TrashCanCapacity.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Il2Cpp|Debug|Any CPU = Debug|Any CPU
-		Il2Cpp|Release|Any CPU = Release|Any CPU
-		Mono|Debug|Any CPU = Debug|Any CPU
-		Mono|Release|Any CPU = Release|Any CPU
+		Il2Cpp|Any CPU = Il2Cpp|Any CPU
+		Mono|Any CPU = Mono|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Il2Cpp|Any CPU.ActiveCfg = Il2Cpp|Any CPU
