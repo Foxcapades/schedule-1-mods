@@ -2,51 +2,88 @@
 
 A collection of tiny mods to tweak to the gameplay experience.
 
-[cols="2,1,7"]
-|===
-| Mod | Type | Description
+== Mods
 
-| link:CopHealthModifier/[Cop Health Modifier]
-| Difficulty
-| Adds a configurable multiplier value to adjust police max health.
+=== link:CopHealthModifier/[Cop Health Modifier]
 
-| link:DayLengthModifier/[Day Length Modifier]
-| Difficulty
-| Adds a configurable multiplier value to adjust game day length.
+Adds a configurable multiplier value to adjust police max health.
 
-| link:DisableDealBonuses/[Disable Deal Bonuses]
-| Difficulty
-| Removes the bonus payments on deals for quality, curfew, quick delivery, and
-  weather.
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1691
 
-| link:DonutMixFix/[Donut Mixing Fix]
-| Fix
-| Corrects the mixing interaction with `CalorieDense + CalorieDense`.
 
-| link:GrowthSpeedModifier/[Plant Growth Modifiers]
-| Difficulty
-| Adds configurable multiplier values to adjust the growth speed of different
-  plant types.
+=== link:DayLengthModifier/[Day Length Modifier]
 
-| link:GunControl/[Gun Control]
-| Difficulty
-| Marks guns and ammunition as illegal.
+Adds a configurable multiplier value to adjust game day length.
 
-| link:IllegalSeeds/[Illegal Seeds]
-| Difficulty
-| Marks coca and marijuana seeds as illegal.
+[none]
+* *Not currently published to mod sites* due to significant similarity with one or
+more existing, functional mods.
 
-| link:ObservantCops/[Observant Cops]
-| Difficulty
-| Makes cops notice when the player is openly holding an illegal item.
 
-| link:RecommendedPrice/[Recommended Price]
-| Difficulty
-| Adds configurable multiplier values to adjust the market price of the
-  different drug types.
+=== link:DisableDealBonuses/[Disable Deal Bonuses]
 
-| link:TrashCanCapacity/[Trash Can Capacity]
-| QOL
-| Adjusts trash can capacity.
-|===
+Removes the bonus payments on deals for quality, curfew, quick delivery, and
+weather.
 
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1708
+
+
+=== link:DonutMixFix/[Donut Mixing Fix]
+
+Corrects the mixing interaction with `CalorieDense + CalorieDense`.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1604
+
+
+=== link:GrowthSpeedModifier/[Plant Growth Modifiers]
+
+Adds configurable multiplier values to adjust the growth speed of different
+plant types.
+
+[none]
+* *Not currently published to mod sites* due to significant similarity with one or
+more existing, functional mods.
+
+
+=== link:GunControl/[Gun Control]
+
+Marks guns and ammunition as illegal.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1657
+
+
+=== link:IllegalSeeds/[Illegal Seeds]
+
+Marks coca and marijuana seeds as illegal.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1663
+
+
+=== link:ObservantCops/[Observant Cops]
+
+Makes cops notice when the player is openly holding an illegal item.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1677
+
+
+=== link:RecommendedPrice/[Recommended Price]
+
+Adds configurable multiplier values to adjust the market price of the different
+drug types.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1654
+
+
+=== link:TrashCanCapacity/[Trash Can Capacity]
+
+Adjusts trash can capacity.
+
+[none]
+* *Not currently published to mod sites.*
