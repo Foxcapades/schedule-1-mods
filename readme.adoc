@@ -90,7 +90,7 @@ drug types.
 
 === link:TrashCanCapacity/[Trash Can Capacity]
 
-Adjusts trash can capacity.
+Adjust trash can capacity.
 
 [none]
-* *Not currently published to mod sites.*
+* On Nexus Mods: https://www.nexusmods.com/games/schedule1/mods/1745
