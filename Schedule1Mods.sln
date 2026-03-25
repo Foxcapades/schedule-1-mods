@@ -5,6 +5,8 @@ Project("{43B2DA6D-2B83-4ECB-AD8A-538FD16D26C4}") = "DayLengthModifier", "DayLen
 EndProject
 Project("{39857026-BBAB-4D95-B383-68BE4639721F}") = "DisableDealBonuses", "DisableDealBonuses/DisableDealBonuses.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
+Project("{d3cd6517-6ddf-4254-b180-c0dd87bc6c07}") = "DisableHotbarScroll", "DisableHotbarScroll/DisableHotbarScroll.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
 Project("{43F26F1C-A117-4E37-B82A-3438D3BC6BAA}") = "DonutMixFix", "DonutMixFix/DonutMixFix.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Project("{4943D58F-3B8B-48B8-B4C3-2DF1F56AAE87}") = "GrowthSpeedModifier", "GrowthSpeedModifier/GrowthSpeedModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"

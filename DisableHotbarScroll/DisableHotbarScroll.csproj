@@ -1,0 +1,7 @@
+<Project>
+  <Import Project="../Schedule1Mods.csproj"/>
+
+  <PropertyGroup>
+    <RootNamespace>DisableHotbarScroll</RootNamespace>
+  </PropertyGroup>
+</Project>

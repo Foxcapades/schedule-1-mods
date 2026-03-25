@@ -42,6 +42,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(AssembliesPath)/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(AssembliesPath)/UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)'=='Mono'">
@@ -69,6 +72,9 @@
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(AssembliesPath)/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(AssembliesPath)/UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
