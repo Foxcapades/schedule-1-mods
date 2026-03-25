@@ -2,20 +2,16 @@ using HarmonyLib;
 using MelonLoader;
 #if IL2CPP
 using Il2CppInterop.Runtime;
-using Il2CppScheduleOne.DevUtilities;
 using Il2CppScheduleOne.Product;
-using Il2CppScheduleOne.UI;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
 #elif MONO
-using ScheduleOne.DevUtilities;
 using ScheduleOne.Product;
-using ScheduleOne.UI;
 using System;
 using System.Collections.Generic;
 #endif
 
-[assembly: MelonInfo(typeof(RecommendedPrice.Mod), RecommendedPrice.Mod.MOD_NAME, "1.1.0", "Foxcapades")]
+[assembly: MelonInfo(typeof(RecommendedPrice.Mod), RecommendedPrice.Mod.MOD_NAME, "1.1.1", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
 
 #nullable enable
@@ -30,8 +26,7 @@ namespace RecommendedPrice {
     private static MelonPreferences_Entry<float>? methModifier;
     private static MelonPreferences_Entry<float>? shrmModifier;
 
-    private static Action<ProductDefinition>? onProductDiscovered;
-    private static Action<ProductDefinition>? onProductCreated;
+    private static Action<ProductDefinition>? onProductAction;
 
     // ReSharper disable once ArrangeObjectCreationWhenTypeEvident
     private static readonly Dictionary<string, float> originalProductPrices = new Dictionary<string, float>(12);
@@ -67,17 +62,14 @@ namespace RecommendedPrice {
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ProductManager), nameof(ProductManager.OnStartServer))]
     static void PreStartServer(ProductManager __instance) {
-      // applyModifiers(__instance);
-#if IL2CPP
-      onProductDiscovered = DelegateSupport.ConvertDelegate<Action<ProductDefinition>>(onProductDiscover);
-      onProductCreated = DelegateSupport.ConvertDelegate<Action<ProductDefinition>>(onProductCreate);
-#elif MONO
-      onProductDiscovered = onProductDiscover;
-      onProductCreated = onProductCreate;
-#endif
+      #if IL2CPP
+      onProductAction = DelegateSupport.ConvertDelegate<Action<ProductDefinition>>(onProduct);
+      #elif MONO
+      onProductAction = onProduct;
+      #endif
 
-      __instance.onProductDiscovered += onProductDiscovered;
-      __instance.onNewProductCreated += onProductCreated;
+      __instance.onProductDiscovered += onProductAction;
+      __instance.onNewProductCreated += onProductAction;
     }
 
     [HarmonyPostfix]
@@ -85,19 +77,12 @@ namespace RecommendedPrice {
     static void PostClean(ProductManager __instance) {
       unapplyModifiers(__instance);
 
-      if (onProductDiscovered == null)
+      if (onProductAction == null)
         return;
 
-      __instance.onProductDiscovered -= onProductDiscovered;
-      __instance.onNewProductCreated -= onProductCreated;
-      onProductDiscovered = null;
-      onProductCreated = null;
-    }
-
-    [HarmonyPrefix]
-    [HarmonyPatch(typeof(NewMixScreen), nameof(NewMixScreen.Open))]
-    static void PreOpen(EDrugType drugType, ref float productMarketValue) {
-      productMarketValue = safeMultiply(productMarketValue, drugType);
+      __instance.onProductDiscovered -= onProductAction;
+      __instance.onNewProductCreated -= onProductAction;
+      onProductAction = null;
     }
 
     private static void applyInMainOnly() {
@@ -105,7 +90,7 @@ namespace RecommendedPrice {
         return;
 
       var logger = Melon<Mod>.Instance.LoggerInstance;
-      var manager = NetworkSingleton<ProductManager>.Instance;
+      var manager = ProductManager.Instance;
 
       logger.Msg("attempting to apply recommended price modifiers");
 
@@ -116,33 +101,18 @@ namespace RecommendedPrice {
         return;
       }
 
-      foreach (var product in manager.AllProducts) {
-        var mktValue = product.MarketValue;
-
-        originalProductPrices.TryAdd(product.ID, mktValue);
-
-        product.MarketValue = safeMultiply(originalProductPrices[product.ID], product.DrugType);
-
-        if (prices.TryGetValue(product, out var price)) {
-          // ReSharper disable once CompareOfFloatsByEqualityOperator
-          if (price != mktValue)
-            continue;
-        }
-
-        prices[product] = product.MarketValue;
-      }
+      foreach (var product in manager.AllProducts)
+        apply(prices, product);
     }
 
-    private static void onProductDiscover(ProductDefinition product) {
-      originalProductPrices.TryAdd(product.ID, product.MarketValue);
-      product.MarketValue = safeMultiply(originalProductPrices[product.ID], product.DrugType);
+    private static void onProduct(ProductDefinition product) {
+      apply(getProductPrices(), product);
     }
 
-    private static void onProductCreate(ProductDefinition product) {
+    private static void apply(Dictionary<ProductDefinition, float>? prices, ProductDefinition product) {
       originalProductPrices.TryAdd(product.ID, product.MarketValue);
       product.MarketValue = safeMultiply(originalProductPrices[product.ID], product.DrugType);
 
-      var prices = getProductPrices();
       if (prices != null)
         prices[product] = product.MarketValue;
     }
@@ -194,7 +164,7 @@ namespace RecommendedPrice {
       if (prop == null)
         return null;
 
-      return (Dictionary<ProductDefinition, float>?) prop.GetValue(NetworkSingleton<ProductManager>.Instance);
+      return (Dictionary<ProductDefinition, float>?) prop.GetValue(ProductManager.Instance);
     }
   }
 }
