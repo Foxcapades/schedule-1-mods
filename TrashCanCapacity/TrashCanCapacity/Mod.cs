@@ -21,13 +21,13 @@ namespace TrashCanCapacity {
   public class Mod: MelonMod {
     public const string MOD_NAME = "TrashCanCapacity";
 
-    private static MelonPreferences_Entry<float> multiplier;
+    private static MelonPreferences_Entry<float>? multiplier;
     private static float initialValue;
     private static bool inMain;
 
     public override void OnInitializeMelon() {
-      multiplier = MelonPreferences.CreateEntry(
-        "Trash Can Capacity",
+      var category = MelonPreferences.CreateCategory(MOD_NAME);
+      multiplier = category.CreateEntry(
         "capacityMultiplier",
         2f,
         "Multiplier"
@@ -52,7 +52,7 @@ namespace TrashCanCapacity {
     }
 
     private static int calcCapacity() =>
-      (int) Math.Round(initialValue * multiplier.Value, MidpointRounding.AwayFromZero);
+      (int) Math.Round(initialValue * multiplier!.Value, MidpointRounding.AwayFromZero);
 
     private static void updateExisting() {
       if (!inMain || initialValue == 0f)
