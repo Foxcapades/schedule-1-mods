@@ -30,6 +30,13 @@ weather.
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1708
 
 
+=== link:DisableDealBonuses/[Disable Hotbar Scroll]
+
+Disables the mouse wheel interaction with the inventory hotbar.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1739
+
 === link:DonutMixFix/[Donut Mixing Fix]
 
 Corrects the mixing interaction with `CalorieDense + CalorieDense`.

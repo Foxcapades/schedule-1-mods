@@ -1,0 +1,3 @@
+= Disable Hotbar Scroll
+
+Disables the mouse wheel interaction with the inventory hotbar.
