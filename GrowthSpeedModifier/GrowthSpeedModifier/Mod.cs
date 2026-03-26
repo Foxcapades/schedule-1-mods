@@ -3,8 +3,10 @@ using MelonLoader;
 using MelonLoader.Preferences;
 #if IL2CPP
 using Il2CppScheduleOne.Growing;
+using Il2CppScheduleOne.ItemFramework;
 #elif MONO
 using ScheduleOne.Growing;
+using ScheduleOne.ItemFramework;
 #endif
 
 [assembly: MelonInfo(typeof(GrowthSpeedModifier.Mod), GrowthSpeedModifier.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
@@ -13,7 +15,7 @@ using ScheduleOne.Growing;
 #nullable enable
 namespace GrowthSpeedModifier {
   public class Mod: MelonMod {
-    public const string MOD_NAME = "GrowthSpeedModifier";
+    public const string MOD_NAME = "Growth Speed Modifiers";
 
     private const float MIN_MULTIPLIER = 0.1f;
     private const float MAX_MULTIPLIER = 50f;
@@ -24,7 +26,7 @@ namespace GrowthSpeedModifier {
 
     public override void OnInitializeMelon() {
       var validator = new Validator();
-      var preferences = MelonPreferences.CreateCategory(MOD_NAME, "Growth Speed Modifiers");
+      var preferences = MelonPreferences.CreateCategory(MOD_NAME, "Modifiers");
 
       cocaModifier = preferences.CreateEntry(
         identifier: "cocaModifier",
@@ -57,14 +59,27 @@ namespace GrowthSpeedModifier {
       }
     }
 
-    [HarmonyPatch(typeof(Plant), nameof(Plant.SetNormalizedGrowthProgress))]
+    [HarmonyPatch(typeof(Plant))]
     private static class PlantPatch {
-      static void Prefix(ref float progress, Plant __instance) {
-        if (__instance.NormalizedGrowthProgress == 0)
+      private static bool pgr;
+
+      [HarmonyPrefix]
+      [HarmonyPatch(nameof(Plant.SetNormalizedGrowthProgress))]
+      static void SetNormalizedGrowthProgressPrefix(ref float progress, Plant __instance) {
+        if (pgr || __instance.NormalizedGrowthProgress == 0) {
+          pgr = false;
           return;
+        }
 
         var delta = progress - __instance.NormalizedGrowthProgress;
         progress = __instance.NormalizedGrowthProgress + delta * getModifier(__instance);
+      }
+
+      [HarmonyPrefix]
+      [HarmonyPatch(nameof(Plant.AdditiveApplied))]
+      static void AdditiveAppliedPrefix(AdditiveDefinition additive) {
+        if (additive.InstantGrowth > 0f)
+          pgr = true;
       }
     }
 
