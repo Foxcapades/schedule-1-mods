@@ -61,13 +61,13 @@ namespace GrowthSpeedModifier {
 
     [HarmonyPatch(typeof(Plant))]
     private static class PlantPatch {
-      private static bool pgr;
+      private static bool growth;
 
       [HarmonyPrefix]
       [HarmonyPatch(nameof(Plant.SetNormalizedGrowthProgress))]
       static void SetNormalizedGrowthProgressPrefix(ref float progress, Plant __instance) {
-        if (pgr || __instance.NormalizedGrowthProgress == 0) {
-          pgr = false;
+        if (growth || __instance.NormalizedGrowthProgress == 0) {
+          growth = false;
           return;
         }
 
@@ -79,7 +79,7 @@ namespace GrowthSpeedModifier {
       [HarmonyPatch(nameof(Plant.AdditiveApplied))]
       static void AdditiveAppliedPrefix(AdditiveDefinition additive) {
         if (additive.InstantGrowth > 0f)
-          pgr = true;
+          growth = true;
       }
     }
 
