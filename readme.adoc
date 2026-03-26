@@ -51,8 +51,7 @@ Adds configurable multiplier values to adjust the growth speed of different
 plant types.
 
 [none]
-* *Not currently published to mod sites* due to significant similarity with one or
-more existing, functional mods.
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1749
 
 
 === link:GunControl/[Gun Control]
