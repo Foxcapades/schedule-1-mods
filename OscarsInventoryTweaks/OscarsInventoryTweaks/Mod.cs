@@ -1,9 +1,7 @@
 using MelonLoader;
-using Object = UnityEngine.Object;
+using Fxcpds;
 #if IL2CPP
 using Il2CppInterop.Runtime;
-using Il2CppInterop.Runtime.InteropTypes;
-using Il2CppInterop.Runtime.Runtime;
 using Il2CppScheduleOne.NPCs;
 using Il2CppScheduleOne.NPCs.CharacterClasses;
 using Il2CppScheduleOne.PlayerScripts;
@@ -28,19 +26,6 @@ namespace OscarsInventoryTweaks {
   public class Mod: MelonMod {
     public const string MOD_ID   = "OscarsInventoryTweaks";
     public const string MOD_NAME = "Oscar's Inventory Tweaks";
-
-    private static class Item {
-      public const string BED         = "bed";
-      public const string FERTILIZER  = "fertilizer";
-      public const string LOCKER      = "locker";
-      public const string PGR         = "pgr";
-      public const string SPEED_GROW  = "speedgrow";
-      public const string TIER_3_SOIL = "extralonglifesoil";
-    }
-
-    private const string NPC_ID_OSCAR = "oscar_holland";
-    private const string NPC_ID_DAN   = "dan_samwell";
-
 
     private static MelonPreferences_Entry<bool>? sellAdditives;
 
@@ -89,20 +74,12 @@ namespace OscarsInventoryTweaks {
     }
 
     #if IL2CPP
-    private static T? cast<T>(Il2CppObjectBase? obj) where T: Il2CppObjectBase {
-      return obj == null ? null : Il2CppObjectPool.Get<T>(obj.Pointer);
-    }
-
     private static void createListingUI(ShopInterface shop, ShopListing[] listings) {
       foreach (var listing in listings) {
         shop.CreateListingUI(listing);
       }
     }
     #elif MONO
-    private static T? cast<T>(Object? obj) where T: Object {
-      return obj == null ? null : (T) obj;
-    }
-
     private static void createListingUI(ShopInterface shop, ShopListing[] listings) {
       var method = typeof(ShopInterface)
         .GetMethod("CreateListingUI", BindingFlags.NonPublic, null, new [] { typeof(ShopListing) }, null)!;
@@ -114,7 +91,7 @@ namespace OscarsInventoryTweaks {
     #endif
 
     private static Definitions getDefsFromDan() {
-      var dan = cast<Dan>(NPCManager.GetNPC(NPC_ID_DAN))!;
+      var dan = Interop.cast<Dan>(NPCManager.GetNPC(Fxcpds.NPC.DAN))!;
 
       return new Definitions(
         dan.ShopInterface.GetListing(Item.LOCKER),
@@ -168,7 +145,7 @@ namespace OscarsInventoryTweaks {
 
     private static void updateShopListings() {
       var definitions = getDefsFromDan();
-      var oscar = cast<Oscar>(NPCManager.GetNPC(NPC_ID_OSCAR));
+      var oscar = Interop.cast<Oscar>(NPCManager.GetNPC(Fxcpds.NPC.OSCAR));
 
       if (oscar == null) {
         Logger.Error("couldn't find Oscar :C");

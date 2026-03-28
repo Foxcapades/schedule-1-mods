@@ -4,4 +4,8 @@
   <PropertyGroup>
     <RootNamespace>OscarsInventoryTweaks</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../lib/Fxcpds/**"/>
+  </ItemGroup>
 </Project>

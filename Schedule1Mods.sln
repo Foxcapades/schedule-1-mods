@@ -15,7 +15,7 @@ Project("{C7C1FC04-AD78-4075-A882-F88B5EE8B86F}") = "GunControl", "GunControl/Gu
 EndProject
 Project("{8644F7CF-7BD7-4EA7-95F2-9EEFBE1F4324}") = "IllegalSeeds", "IllegalSeeds/IllegalSeeds.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{0f3dc711-3203-4a5c-b1bd-365e034c2214}") = "OscarsInventoryTweaks", "OscarsInventoryTweaks/OscarsInventoryTweaks.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{0F3DC711-3203-4A5C-B1BD-365E034C2214}") = "OscarsInventoryTweaks", "OscarsInventoryTweaks/OscarsInventoryTweaks.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Project("{CDEE1D7B-04FC-4BD0-A9D7-675FD2EEC6FB}") = "ObservantCops", "ObservantCops/ObservantCops.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
