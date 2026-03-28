@@ -118,7 +118,7 @@ namespace RecommendedPrice {
       if (prices == null || !prices.TryGetValue(product, out var price))
         return;
 
-      if (price == 0 || Mathf.Approximately(price, mktValue))
+      if (price == 0 || Mathf.Approximately(price, product.BasePrice) || Mathf.Approximately(price, mktValue))
         prices[product] = product.MarketValue;
     }
 
