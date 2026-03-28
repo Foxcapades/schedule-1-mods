@@ -1,5 +1,6 @@
 using HarmonyLib;
 using MelonLoader;
+using UnityEngine;
 #if IL2CPP
 using Il2CppInterop.Runtime;
 using Il2CppScheduleOne.Product;
@@ -11,7 +12,7 @@ using System;
 using System.Collections.Generic;
 #endif
 
-[assembly: MelonInfo(typeof(RecommendedPrice.Mod), RecommendedPrice.Mod.MOD_NAME, "1.1.1", "Foxcapades")]
+[assembly: MelonInfo(typeof(RecommendedPrice.Mod), RecommendedPrice.Mod.MOD_NAME, "1.1.2", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
 
 #nullable enable
@@ -110,10 +111,14 @@ namespace RecommendedPrice {
     }
 
     private static void apply(Dictionary<ProductDefinition, float>? prices, ProductDefinition product) {
+      var mktValue = product.MarketValue;
       originalProductPrices.TryAdd(product.ID, product.MarketValue);
       product.MarketValue = safeMultiply(originalProductPrices[product.ID], product.DrugType);
 
-      if (prices != null)
+      if (prices == null || !prices.TryGetValue(product, out var price))
+        return;
+
+      if (price == 0 || Mathf.Approximately(price, mktValue))
         prices[product] = product.MarketValue;
     }
 

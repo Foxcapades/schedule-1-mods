@@ -5,7 +5,7 @@ Project("{43B2DA6D-2B83-4ECB-AD8A-538FD16D26C4}") = "DayLengthModifier", "DayLen
 EndProject
 Project("{39857026-BBAB-4D95-B383-68BE4639721F}") = "DisableDealBonuses", "DisableDealBonuses/DisableDealBonuses.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{d3cd6517-6ddf-4254-b180-c0dd87bc6c07}") = "DisableHotbarScroll", "DisableHotbarScroll/DisableHotbarScroll.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{D3CD6517-6DDF-4254-B180-C0DD87BC6C07}") = "DisableHotbarScroll", "DisableHotbarScroll/DisableHotbarScroll.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Project("{43F26F1C-A117-4E37-B82A-3438D3BC6BAA}") = "DonutMixFix", "DonutMixFix/DonutMixFix.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{C7C1FC04-AD78-4075-A882-F88B5EE8B86F}") = "GunControl", "GunControl/GunControl.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Project("{8644F7CF-7BD7-4EA7-95F2-9EEFBE1F4324}") = "IllegalSeeds", "IllegalSeeds/IllegalSeeds.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
+Project("{0f3dc711-3203-4a5c-b1bd-365e034c2214}") = "OscarsInventoryTweaks", "OscarsInventoryTweaks/OscarsInventoryTweaks.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Project("{CDEE1D7B-04FC-4BD0-A9D7-675FD2EEC6FB}") = "ObservantCops", "ObservantCops/ObservantCops.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
@@ -27,10 +29,6 @@ Global
 		Mono|Any CPU = Mono|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Il2Cpp|Any CPU.ActiveCfg = Il2Cpp|Any CPU
-		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Il2Cpp|Any CPU.Build.0 = Il2Cpp|Any CPU
-		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Mono|Any CPU.ActiveCfg = Mono|Any CPU
-		{B6648785-D296-4FDC-BCA6-F4F9E68E9582}.Mono|Any CPU.Build.0 = Mono|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

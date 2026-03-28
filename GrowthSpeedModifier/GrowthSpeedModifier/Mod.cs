@@ -9,7 +9,7 @@ using ScheduleOne.Growing;
 using ScheduleOne.ItemFramework;
 #endif
 
-[assembly: MelonInfo(typeof(GrowthSpeedModifier.Mod), GrowthSpeedModifier.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
+[assembly: MelonInfo(typeof(GrowthSpeedModifier.Mod), GrowthSpeedModifier.Mod.MOD_NAME, "1.0.1", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
 
 #nullable enable
@@ -66,10 +66,16 @@ namespace GrowthSpeedModifier {
       [HarmonyPrefix]
       [HarmonyPatch(nameof(Plant.SetNormalizedGrowthProgress))]
       static void SetNormalizedGrowthProgressPrefix(ref float progress, Plant __instance) {
-        if (growth || __instance.NormalizedGrowthProgress == 0) {
+        if (growth) {
           growth = false;
+          #if DEBUG
+          Melon<Mod>.Logger.Msg("speed grow unset");
+          #endif
           return;
         }
+
+        if (__instance.NormalizedGrowthProgress == 0)
+          return;
 
         var delta = progress - __instance.NormalizedGrowthProgress;
         progress = __instance.NormalizedGrowthProgress + delta * getModifier(__instance);
@@ -77,9 +83,13 @@ namespace GrowthSpeedModifier {
 
       [HarmonyPrefix]
       [HarmonyPatch(nameof(Plant.AdditiveApplied))]
-      static void AdditiveAppliedPrefix(AdditiveDefinition additive) {
-        if (additive.InstantGrowth > 0f)
+      static void AdditiveAppliedPrefix(AdditiveDefinition additive, bool isInitialApplication) {
+        if (isInitialApplication && additive.InstantGrowth > 0f) {
           growth = true;
+          #if DEBUG
+          Melon<Mod>.Logger.Msg("speed grow used");
+          #endif
+        }
       }
     }
 
