@@ -1,18 +1,22 @@
 using MelonLoader;
+using Object = UnityEngine.Object;
 #if IL2CPP
 using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.InteropTypes;
 using Il2CppInterop.Runtime.Runtime;
 using Il2CppScheduleOne.NPCs;
 using Il2CppScheduleOne.NPCs.CharacterClasses;
 using Il2CppScheduleOne.PlayerScripts;
 using Il2CppScheduleOne.UI.Shop;
 using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
 #elif MONO
-using ScheduleOne.Core.Items.Framework;
-using ScheduleOne.ItemFramework;
 using ScheduleOne.NPCs;
 using ScheduleOne.NPCs.CharacterClasses;
 using ScheduleOne.PlayerScripts;
+using ScheduleOne.UI.Shop;
+using System.Collections.Generic;
+using System.Reflection;
 #endif
 
 [assembly: MelonInfo(typeof(OscarsInventoryTweaks.Mod), OscarsInventoryTweaks.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
@@ -20,18 +24,23 @@ using ScheduleOne.PlayerScripts;
 
 #nullable enable
 namespace OscarsInventoryTweaks {
+
   public class Mod: MelonMod {
     public const string MOD_ID   = "OscarsInventoryTweaks";
     public const string MOD_NAME = "Oscar's Inventory Tweaks";
 
+    private static class Item {
+      public const string BED         = "bed";
+      public const string FERTILIZER  = "fertilizer";
+      public const string LOCKER      = "locker";
+      public const string PGR         = "pgr";
+      public const string SPEED_GROW  = "speedgrow";
+      public const string TIER_3_SOIL = "extralonglifesoil";
+    }
+
     private const string NPC_ID_OSCAR = "oscar_holland";
     private const string NPC_ID_DAN   = "dan_samwell";
 
-    private const string BED_ITEM_ID        = "bed";
-    private const string FERTILIZER_ITEM_ID = "fertilizer";
-    private const string LOCKER_ITEM_ID     = "locker";
-    private const string PGR_ITEM_ID        = "pgr";
-    private const string SPEED_GROW_ITEM_ID = "speedgrow";
 
     private static MelonPreferences_Entry<bool>? sellAdditives;
 
@@ -79,26 +88,40 @@ namespace OscarsInventoryTweaks {
       }
     }
 
-    private static Definitions getDefsFromDan() {
-      var npc = NPCManager.GetNPC(NPC_ID_DAN);
-      var dan = Il2CppObjectPool.Get<Dan>(npc.Pointer);
-
-      return new(
-        dan.ShopInterface.GetListing(LOCKER_ITEM_ID),
-        dan.ShopInterface.GetListing(FERTILIZER_ITEM_ID),
-        dan.ShopInterface.GetListing(PGR_ITEM_ID),
-        dan.ShopInterface.GetListing(SPEED_GROW_ITEM_ID)
-      );
+    #if IL2CPP
+    private static T? cast<T>(Il2CppObjectBase? obj) where T: Il2CppObjectBase {
+      return obj == null ? null : Il2CppObjectPool.Get<T>(obj.Pointer);
     }
 
-    private static Oscar? grabAnOscar() {
-      var oscar = NPCManager.GetNPC(NPC_ID_OSCAR);
+    private static void createListingUI(ShopInterface shop, ShopListing[] listings) {
+      foreach (var listing in listings) {
+        shop.CreateListingUI(listing);
+      }
+    }
+    #elif MONO
+    private static T? cast<T>(Object? obj) where T: Object {
+      return obj == null ? null : (T) obj;
+    }
 
-      #if IL2CPP
-      return oscar == null ? null : Il2CppObjectPool.Get<Oscar>(oscar.Pointer);
-      #elif MONO
-      return oscar == null ? null : (Oscar) oscar;
-      #endif
+    private static void createListingUI(ShopInterface shop, ShopListing[] listings) {
+      var method = typeof(ShopInterface)
+        .GetMethod("CreateListingUI", BindingFlags.NonPublic, null, new [] { typeof(ShopListing) }, null)!;
+
+      foreach (var listing in listings) {
+        method.Invoke(shop, new object[] { listing });
+      }
+    }
+    #endif
+
+    private static Definitions getDefsFromDan() {
+      var dan = cast<Dan>(NPCManager.GetNPC(NPC_ID_DAN))!;
+
+      return new Definitions(
+        dan.ShopInterface.GetListing(Item.LOCKER),
+        dan.ShopInterface.GetListing(Item.FERTILIZER),
+        dan.ShopInterface.GetListing(Item.PGR),
+        dan.ShopInterface.GetListing(Item.SPEED_GROW)
+      );
     }
 
     private static ShopListing copyListing(ShopListing old, ShopInterface shop) {
@@ -127,26 +150,62 @@ namespace OscarsInventoryTweaks {
       return listing;
     }
 
+    private static List<ListingUI> getListingUIList(ShopInterface shop) {
+      #if IL2CPP
+      return shop.listingUI;
+      #elif MONO
+      return (List<ListingUI>) typeof(ShopInterface)
+        .GetProperty("listingUI", BindingFlags.NonPublic)
+        !.GetValue(shop);
+      #endif
+    }
+
+    private static void moveItem<T>(List<T> items, int from, int to) {
+      var item = items[from];
+      items.RemoveAt(from);
+      items.Insert(to, item);
+    }
+
     private static void updateShopListings() {
       var definitions = getDefsFromDan();
-      var oscar = grabAnOscar();
+      var oscar = cast<Oscar>(NPCManager.GetNPC(NPC_ID_OSCAR));
 
       if (oscar == null) {
         Logger.Error("couldn't find Oscar :C");
         return;
       }
 
-      var listing = oscar.ShopInterface.Listings;
+      var listings = oscar.ShopInterface.Listings;
 
-      for (var i = 0; i < listing.Count; i++) {
-        if (listing[i].Item.ID == BED_ITEM_ID) {
-          listing[i] = copyListing(definitions.locker, oscar.ShopInterface);
+      var newListings = new ShopListing[4] {
+        copyListing(definitions.fertilizer, oscar.ShopInterface),
+        copyListing(definitions.pgr, oscar.ShopInterface),
+        copyListing(definitions.speedGrow, oscar.ShopInterface),
+        copyListing(definitions.locker, oscar.ShopInterface),
+      };
+
+      foreach (var listing in newListings)
+        listings.Add(listing);
+
+      var listingUI = getListingUIList(oscar.ShopInterface);
+      var newPositions = new int[4];
+
+      for (var i = 0; i < listingUI.Count; i++) {
+        var id = listingUI[i].Listing.Item.ID;
+
+        if (id == Item.BED) {
+          newPositions[3] = i + 1;
+        } else if (id == Item.TIER_3_SOIL) {
+          for (var j = 0; j < 3; j++) {
+            newPositions[j] = i + 1;
+          }
         }
       }
 
-      listing.Add(copyListing(definitions.fertilizer, oscar.ShopInterface));
-      listing.Add(copyListing(definitions.pgr, oscar.ShopInterface));
-      listing.Add(copyListing(definitions.speedGrow, oscar.ShopInterface));
+      createListingUI(oscar.ShopInterface, newListings);
+
+      for (var i = newPositions.Length - 1; i >= 0; i--)
+        moveItem(listingUI, listingUI.Count-1, newPositions[i]);
     }
   }
 }
