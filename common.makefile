@@ -1,7 +1,7 @@
 PROJECT_ID := $(shell basename ${PWD})
 VERSION := $(shell grep 'MelonInfo' $(PROJECT_ID)/Mod.cs | cut -d'"' -f2 | tr -d '\n')
 
-LIFECYCLE := Release
+LIFECYCLE := RELEASE
 CONFIGURATION := Il2Cpp
 
 LOWER_CONFIG := $(shell echo $(CONFIGURATION) | tr A-Z a-z)
@@ -48,6 +48,7 @@ package: $(RELEASE_ZIP)
 install: build
 	@if [ ! -z "$(INSTALL_DIRECTORY)" ]; then \
 		cp $(OUTPUT_TARGET) "$(INSTALL_DIRECTORY)"; \
+		echo "Installing $(notdir $(OUTPUT_TARGET))"; \
 	fi
 
 .PHONY: release
@@ -69,12 +70,13 @@ build-il2cpp:
 package-il2cpp:
 	@$(MAKE) CONFIGURATION=Il2Cpp package
 
-$(BUILD_TARGET): $(PROJECT_ID)/Mod.cs
-	@dotnet build -c $(CONFIGURATION)
+$(BUILD_TARGET):
+	dotnet build -c $(CONFIGURATION) -p Lifecycle=$(LIFECYCLE)
 
 $(OUTPUT_TARGET): $(BUILD_TARGET)
 	@mkdir -p $(TARGET_DIRECTORY)
 	@cp $(BUILD_TARGET) $(OUTPUT_TARGET)
 
 $(RELEASE_ZIP): $(OUTPUT_TARGET)
+	@echo "Zipping $(OUTPUT_DLL)"
 	@cd $(TARGET_DIRECTORY) && zip -9 $(@F) $(OUTPUT_DLL)

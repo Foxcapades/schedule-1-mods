@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
     <Configuration>Il2Cpp</Configuration>
+<!--    <Configuration>Mono</Configuration>-->
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Il2Cpp'">
