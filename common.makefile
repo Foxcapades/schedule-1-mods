@@ -71,7 +71,7 @@ package-il2cpp:
 	@$(MAKE) CONFIGURATION=Il2Cpp package
 
 $(BUILD_TARGET):
-	dotnet build -c $(CONFIGURATION) -p Lifecycle=$(LIFECYCLE)
+	dotnet build --configuration $(CONFIGURATION) --property:Lifecycle=$(LIFECYCLE)
 
 $(OUTPUT_TARGET): $(BUILD_TARGET)
 	@mkdir -p $(TARGET_DIRECTORY)

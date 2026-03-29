@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using MelonLoader;
 #if IL2CPP
 using Il2CppInterop.Runtime;
@@ -17,7 +16,7 @@ namespace Fxcpds {
 
     protected static bool InMainScene { get; private set; }
 
-    public string? ConfigPath { get; protected set; } = null;
+    public string? ConfigPath { get; protected set; }
 
     public override void OnInitializeMelon() {
       #if IL2CPP
