@@ -19,7 +19,7 @@ using System;
 
 #nullable enable
 namespace TrashCanCapacity {
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_NAME = "TrashCanCapacity";
 
     private static MelonPreferences_Entry<float>? multiplier;

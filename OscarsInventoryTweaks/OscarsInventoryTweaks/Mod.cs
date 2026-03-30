@@ -23,7 +23,7 @@ using System.IO;
 #nullable enable
 namespace OscarsInventoryTweaks {
 
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_ID = "Oscar's Inventory Tweaks";
 
     protected override string configPath => "OscarsInventoryTweaks.cfg";
@@ -67,14 +67,14 @@ namespace OscarsInventoryTweaks {
     }
 
     private static void init() {
-      Logger.Debug("initializing");
+      Instance.LoggerInstance.Debug("initializing");
 
       var dan = NPC.Get<Dan>(NPC.Dan)!.ShopInterface;
 
       for (var i = 0; i < TargetItemIDs.Length; i++) {
         targetItemListings[i] = dan.GetListing(TargetItemIDs[i]);
 
-        Logger.Debug("grabbed {0} listing from dan", targetItemListings[i]?.Item?.ID);
+        Instance.LoggerInstance.Debug("grabbed {0} listing from dan", targetItemListings[i]?.Item?.ID);
       }
     }
 
@@ -110,7 +110,7 @@ namespace OscarsInventoryTweaks {
         var result = oscar.GetListing(itemID);
 
         if (result != null) {
-          Logger.Debug("removing {0} from Oscar's inventory", itemID);
+          Instance.LoggerInstance.Debug("removing {0} from Oscar's inventory", itemID);
           oscar.Listings.Remove(result);
 
           ListingUI? uiListing = null;
@@ -189,19 +189,19 @@ namespace OscarsInventoryTweaks {
       var oscar = NPC.Get<Oscar>(NPC.Oscar)?.ShopInterface;
 
       if (oscar == null) {
-        Logger.Debug("oscar was null");
+        Instance.LoggerInstance.Debug("oscar was null");
         return;
       }
 
       var uiListings = oscar.ListingUIItems();
       if (uiListings == null) {
-        Logger.Debug("uiListings was null");
+        Instance.LoggerInstance.Debug("uiListings was null");
         return;
       }
 
       var uiPanel = oscar.ListingPanel();
       if (uiPanel == null) {
-        Logger.Debug("uiPanel was null");
+        Instance.LoggerInstance.Debug("uiPanel was null");
         return;
       }
 

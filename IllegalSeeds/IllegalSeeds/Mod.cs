@@ -15,8 +15,14 @@ using ScheduleOne.Core.Items.Framework;
 
 #nullable enable
 namespace IllegalSeeds {
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_NAME = "Illegal Seeds";
+
+    private const string CocaSeed             = "cocaseed";
+    private const string GranddaddyPurpleSeed = "granddaddypurpleseed";
+    private const string GreenCrackSeed       = "greencrackseed";
+    private const string OGKushSeed           = "ogkushseed";
+    private const string SourDieselSeed       = "sourdieselseed";
 
     protected override void onMainLoaded() {
       foreach (var item in Singleton<Registry>.Instance.GetAllItems()) {
@@ -24,14 +30,14 @@ namespace IllegalSeeds {
           continue;
 
         switch (item.ID) {
-          case Item.CocaSeed:
+          case CocaSeed:
             item.legalStatus = ELegalStatus.HighSeverityDrug;
             break;
 
-          case Item.GranddaddyPurpleSeed:
-          case Item.GreenCrackSeed:
-          case Item.OGKushSeed:
-          case Item.SourDieselSeed:
+          case GranddaddyPurpleSeed:
+          case GreenCrackSeed:
+          case OGKushSeed:
+          case SourDieselSeed:
             item.legalStatus = ELegalStatus.ModerateSeverityDrug;
             break;
         }

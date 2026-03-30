@@ -13,7 +13,7 @@ using ScheduleOne.Police;
 
 #nullable enable
 namespace CopHealthModifier {
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_NAME = "Cop Health Modifier";
     private const string MOD_PREF_NAME = "hpMultiplier";
 

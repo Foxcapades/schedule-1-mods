@@ -44,8 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="../lib/Fxcpds/**"/>
-
     <Reference Include="Harmony">
       <HintPath>$(MelonPath)/0Harmony.dll</HintPath>
     </Reference>

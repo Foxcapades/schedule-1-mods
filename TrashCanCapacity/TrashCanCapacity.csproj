@@ -20,4 +20,9 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug | Il2Cpp|AnyCPU' ">
     <OutputPath>bin\Debug | Il2Cpp\</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../lib/Fxcpds/FxMod.cs"/>
+    <Compile Include="../lib/Fxcpds/Debug.cs"/>
+  </ItemGroup>
 </Project>

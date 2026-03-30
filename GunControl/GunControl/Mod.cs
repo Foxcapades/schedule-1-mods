@@ -15,8 +15,16 @@ using ScheduleOne.Core.Items.Framework;
 
 #nullable enable
 namespace GunControl {
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_NAME = "Gun Control";
+
+    private const string M1911       = "m1911";
+    private const string PumpShotgun = "pumpshotgun";
+    private const string Revolver    = "revolver";
+
+    private const string M1911Magazine    = "m1911mag";
+    private const string RevolverCylinder = "revolvercylinder";
+    private const string ShotgunShell     = "shotgunshell";
 
     protected override void onMainLoaded() {
       var items = Singleton<Registry>.Instance.GetAllItems();
@@ -26,14 +34,14 @@ namespace GunControl {
           continue;
 
         switch (item.ID) {
-          case Item.M1911:
-          case Item.Revolver:
-          case Item.PumpShotgun:
+          case M1911:
+          case Revolver:
+          case PumpShotgun:
             item.legalStatus = ELegalStatus.HighSeverityDrug;
             break;
-          case Item.M1911Magazine:
-          case Item.RevolverCylinder:
-          case Item.ShotgunShell:
+          case M1911Magazine:
+          case RevolverCylinder:
+          case ShotgunShell:
             item.legalStatus = ELegalStatus.ModerateSeverityDrug;
             break;
         }

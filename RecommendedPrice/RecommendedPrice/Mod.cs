@@ -19,7 +19,7 @@ using System.Collections.Generic;
 #nullable enable
 namespace RecommendedPrice {
   [HarmonyPatch]
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_NAME = "Recommended Price";
 
     private static MelonPreferences_Category? preferences;

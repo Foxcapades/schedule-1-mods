@@ -19,7 +19,7 @@ using ScheduleOne.Vision;
 
 #nullable enable
 namespace ObservantCops {
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_NAME = "Observant Cops";
 
     private const string STATE_LABEL = "holding_suspicious_item";

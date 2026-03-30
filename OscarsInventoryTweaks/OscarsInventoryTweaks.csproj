@@ -6,6 +6,11 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <Compile Include="../lib/Fxcpds/FxMod.cs"/>
+    <Compile Include="../lib/Fxcpds/Debug.cs"/>
+    <Compile Include="../lib/Fxcpds/Interop.cs"/>
+    <Compile Include="../lib/Fxcpds/NPC.cs"/>
+
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>$(AssembliesPath)/UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>

@@ -14,7 +14,7 @@ using ScheduleOne.PlayerScripts;
 
 #nullable enable
 namespace DayLengthModifier {
-  public class Mod: FxMod<Mod> {
+  public class Mod: FxMod {
     public const string MOD_NAME = "DayLengthModifier";
 
     private const float MIN_MULTIPLIER = 0.1f;
