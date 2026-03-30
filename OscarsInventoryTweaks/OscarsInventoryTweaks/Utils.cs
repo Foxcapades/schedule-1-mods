@@ -60,7 +60,7 @@ namespace OscarsInventoryTweaks {
       var field = typeof(ShopInterface)
         .GetField("listingUI", BindingFlags.NonPublic | BindingFlags.Instance);
 
-      FxMod.Logger.Debug("got field {0}", field);
+      Mod.Logger.Debug("reflectively got field {0}", field);
 
       return (List<ListingUI>) field!.GetValue(shop);
       #endif
@@ -73,7 +73,7 @@ namespace OscarsInventoryTweaks {
       var field = typeof(ShopInterface)
         .GetField("listingPanel", BindingFlags.NonPublic | BindingFlags.Instance);
 
-      FxMod.Logger.Debug("got field {0}", field);
+      Mod.Logger.Debug("reflectively got field {0}", field);
 
       return (UIPanel) field!.GetValue(shop);
       #endif

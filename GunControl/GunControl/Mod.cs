@@ -1,3 +1,4 @@
+using Fxcpds;
 using MelonLoader;
 #if IL2CPP
 using Il2CppScheduleOne;
@@ -14,13 +15,10 @@ using ScheduleOne.Core.Items.Framework;
 
 #nullable enable
 namespace GunControl {
-  public class Mod: MelonMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_NAME = "Gun Control";
 
-    public override void OnSceneWasLoaded(int buildIndex, string sceneName) {
-      if (sceneName != "Main")
-        return;
-
+    protected override void onMainLoaded() {
       var items = Singleton<Registry>.Instance.GetAllItems();
 
       foreach (var item in items) {
@@ -28,14 +26,14 @@ namespace GunControl {
           continue;
 
         switch (item.ID) {
-          case "m1911":
-          case "revolver":
-          case "pumpshotgun":
+          case Item.M1911:
+          case Item.Revolver:
+          case Item.PumpShotgun:
             item.legalStatus = ELegalStatus.HighSeverityDrug;
             break;
-          case "m1911mag":
-          case "revolvercylinder":
-          case "shotgunshell":
+          case Item.M1911Magazine:
+          case Item.RevolverCylinder:
+          case Item.ShotgunShell:
             item.legalStatus = ELegalStatus.ModerateSeverityDrug;
             break;
         }

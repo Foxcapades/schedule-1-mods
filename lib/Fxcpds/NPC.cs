@@ -15,12 +15,7 @@ namespace Fxcpds {
     public const string Dan   = "dan_samwell";
     public const string Hank  = "hank_stevenson";
 
-    public static T? Get<T>(string id) where T: GameNPC {
-      FxMod.Logger.Debug("getting npc ({0})", id);
-      var ret = Interop.cast<T>(NPCManager.GetNPC(id));
-      FxMod.Logger.Debug("got npc ({0})", ret);
-      return ret;
-    }
-
+    public static T? Get<T>(string id) where T: GameNPC =>
+      Interop.cast<T>(NPCManager.GetNPC(id));
   }
 }

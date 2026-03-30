@@ -10,3 +10,9 @@ build-all:
 .PHONY: install
 install:
 	@$(MAKE) -C $(PROJECT) PROJECT_ID=$(PROJECT) install
+
+.PHONY: clean-all
+clean-all:
+	@for project in $(PROJECTS); do \
+		rm -rf "$${project}/bin" "$${project}/obj" "$${project}/target"; \
+	done

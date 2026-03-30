@@ -1,22 +1,53 @@
 using MelonLoader;
+using MelonLoader.Utils;
+
 #if IL2CPP
 using Il2CppInterop.Runtime;
 using Il2CppScheduleOne.PlayerScripts;
 using Il2CppSystem;
+using Il2CppSystem.IO;
 #elif MONO
 using ScheduleOne.PlayerScripts;
+using System.IO;
 #endif
 
 #nullable enable
 namespace Fxcpds {
-  public class FxMod: MelonMod {
-    protected static string Scene { get ; private set; } = Fxcpds.Scene.Undefined;
+  public abstract class FxMod<T>: FxMod where T: FxMod<T> {
+    private static T? instance;
+    public static T Instance => instance!;
 
-    public static MelonLogger.Instance Logger => Melon<FxMod>.Logger;
+    public static MelonLogger.Instance Logger => Instance.LoggerInstance;
 
-    protected static bool InMainScene { get; private set; }
+    public override void OnEarlyInitializeMelon() {
+      instance = (T) this;
+    }
+  }
 
-    public string? ConfigPath { get; protected set; }
+  public abstract class FxMod: MelonMod {
+    /// <summary>
+    /// The current Unity scene name.
+    /// </summary>
+    protected string Scene { get ; private set; } = Fxcpds.Scene.Undefined;
+
+    /// <summary>
+    /// Whether the Main Unity scene is currently loaded.
+    /// </summary>
+    protected bool InMainScene { get; private set; }
+
+    /// <summary>
+    /// Path to the mod-specific configuration file relative to the UserData
+    /// directory.  If the mod does not have a configuration file, this value
+    /// should be null.
+    /// </summary>
+    protected virtual string? configPath { get; }
+
+    /// <summary>
+    /// Expanded path to the mod specific configuration file.  If the mod does
+    /// not have a configuration file, this value will be null.
+    /// </summary>
+    public string? ConfigPath =>
+      configPath == null ? null : Path.Combine(MelonEnvironment.UserDataDirectory, configPath);
 
     public override void OnInitializeMelon() {
       #if IL2CPP
@@ -49,15 +80,38 @@ namespace Fxcpds {
       }
     }
 
-    private void onPlayerSpawned(Player player) {
-      if (player.IsLocalPlayer) {
-        Logger.Debug("local player loaded");
-        onLocalPlayerLoaded(player);
+    public sealed override void OnPreferencesSaved(string filepath) {
+      if (configPath != null && filepath.EndsWith(configPath)) {
+        LoggerInstance.Debug("calling onModPreferencesSaved()");
+        onModPreferencesSaved();
       }
     }
 
+    public override void OnPreferencesLoaded(string filepath) {
+      if (configPath != null && filepath.EndsWith(configPath)) {
+        LoggerInstance.Debug("calling onModPreferencesLoaded()");
+        onModPreferencesSaved();
+      }
+    }
+
+    protected virtual void onModPreferencesSaved() {}
+    protected virtual void onModPreferencesLoaded() {}
+
+    private void onPlayerSpawned(Player player) {
+      if (player.IsLocalPlayer) {
+        LoggerInstance.Debug("local player loaded");
+        onLocalPlayerLoaded(player);
+      }
+      onPlayerLoaded(player);
+    }
+
+    protected virtual void onPlayerLoaded(Player player) { }
+
     protected virtual void onLocalPlayerLoaded(Player player) { }
 
+    /// <summary>
+    /// Called when the Unity scene "Main" is loaded.
+    /// </summary>
     protected virtual void onMainLoaded() { }
     protected virtual void onMainInitialized() { }
     protected virtual void onMainUnloaded() { }

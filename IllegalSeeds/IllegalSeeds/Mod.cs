@@ -1,3 +1,4 @@
+using Fxcpds;
 using MelonLoader;
 #if IL2CPP
 using Il2CppScheduleOne;
@@ -14,26 +15,23 @@ using ScheduleOne.Core.Items.Framework;
 
 #nullable enable
 namespace IllegalSeeds {
-  public class Mod: MelonMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_NAME = "Illegal Seeds";
 
-    public override void OnSceneWasLoaded(int buildIndex, string sceneName) {
-      if (sceneName != "Main")
-        return;
-
+    protected override void onMainLoaded() {
       foreach (var item in Singleton<Registry>.Instance.GetAllItems()) {
         if (item.Category != EItemCategory.Agriculture)
           continue;
 
         switch (item.ID) {
-          case "cocaseed":
+          case Item.CocaSeed:
             item.legalStatus = ELegalStatus.HighSeverityDrug;
             break;
 
-          case "granddaddypurpleseed":
-          case "greencrackseed":
-          case "ogkushseed":
-          case "sourdieselseed":
+          case Item.GranddaddyPurpleSeed:
+          case Item.GreenCrackSeed:
+          case Item.OGKushSeed:
+          case Item.SourDieselSeed:
             item.legalStatus = ELegalStatus.ModerateSeverityDrug;
             break;
         }

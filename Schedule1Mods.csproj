@@ -14,18 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(Configuration)'=='Il2Cpp'">
-    <Reference Include="Harmony">
-      <HintPath>$(MelonPath)/0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="Il2CppInterop.Runtime">
       <HintPath>$(MelonPath)/Il2CppInterop.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="MelonLoader">
-      <HintPath>$(MelonPath)/MelonLoader.dll</HintPath>
-    </Reference>
-
-    <Reference Include="Assembly-CSharp">
-      <HintPath>$(AssembliesPath)/Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppFishNet.Runtime">
       <HintPath>$(AssembliesPath)/Il2CppFishNet.Runtime.dll</HintPath>
@@ -36,27 +26,11 @@
     <Reference Include="Il2CppScheduleOne.Core">
       <HintPath>$(AssembliesPath)/Il2CppScheduleOne.Core.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>$(AssembliesPath)/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(AssembliesPath)/UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>$(AssembliesPath)/UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)'=='Mono'">
-    <Reference Include="Harmony">
-      <HintPath>$(MelonPath)/0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="MelonLoader">
       <HintPath>$(MelonPath)/MelonLoader.dll</HintPath>
-    </Reference>
-
-    <Reference Include="Assembly-CSharp">
-      <HintPath>$(AssembliesPath)/Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="FishNet.Runtime">
       <HintPath>$(AssembliesPath)/FishNet.Runtime.dll</HintPath>
@@ -66,6 +40,20 @@
     </Reference>
     <Reference Include="ScheduleOne.Core">
       <HintPath>$(AssembliesPath)/ScheduleOne.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../lib/Fxcpds/**"/>
+
+    <Reference Include="Harmony">
+      <HintPath>$(MelonPath)/0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>$(MelonPath)/MelonLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(AssembliesPath)/Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>$(AssembliesPath)/UnityEngine.dll</HintPath>

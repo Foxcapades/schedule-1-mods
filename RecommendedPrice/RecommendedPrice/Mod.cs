@@ -1,3 +1,4 @@
+using Fxcpds;
 using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
@@ -18,7 +19,7 @@ using System.Collections.Generic;
 #nullable enable
 namespace RecommendedPrice {
   [HarmonyPatch]
-  public class Mod: MelonMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_NAME = "Recommended Price";
 
     private static MelonPreferences_Category? preferences;
@@ -32,8 +33,6 @@ namespace RecommendedPrice {
     // ReSharper disable once ArrangeObjectCreationWhenTypeEvident
     private static readonly Dictionary<string, float> originalProductPrices = new Dictionary<string, float>(12);
 
-    private static bool inMainScene;
-
     public override void OnInitializeMelon() {
       preferences = MelonPreferences.CreateCategory("Recommended Price", "Recommended Price");
       weedModifier = preferences.CreateEntry("weedModifier", 1f, "Weed Price Multiplier");
@@ -42,22 +41,12 @@ namespace RecommendedPrice {
       shrmModifier = preferences.CreateEntry("shoomModifier", 1f, "Shroom Price Multiplier");
     }
 
-    public override void OnPreferencesLoaded() {
+    protected override void onModPreferencesLoaded() {
       applyInMainOnly();
     }
 
-    public override void OnPreferencesSaved() {
+    protected override void onModPreferencesSaved() {
       applyInMainOnly();
-    }
-
-    public override void OnSceneWasLoaded(int _, string sceneName) {
-      if (sceneName == "Main")
-        inMainScene = true;
-    }
-
-    public override void OnSceneWasUnloaded(int _, string sceneName) {
-      if (sceneName == "Main")
-        inMainScene = false;
     }
 
     [HarmonyPrefix]
@@ -87,7 +76,7 @@ namespace RecommendedPrice {
     }
 
     private static void applyInMainOnly() {
-      if (!inMainScene)
+      if (!Instance.InMainScene)
         return;
 
       var logger = Melon<Mod>.Instance.LoggerInstance;

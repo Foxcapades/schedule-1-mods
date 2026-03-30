@@ -14,16 +14,19 @@ using ScheduleOne.PlayerScripts;
 using ScheduleOne.UI.Shop;
 using System.Collections.Generic;
 using System.Reflection;
+using System.IO;
 #endif
 
-[assembly: MelonInfo(typeof(OscarsInventoryTweaks.Mod), OscarsInventoryTweaks.Mod.MOD_ID, "1.0.0", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
+[assembly: MelonInfo(typeof(OscarsInventoryTweaks.Mod), OscarsInventoryTweaks.Mod.MOD_ID, "1.0.1", "Foxcapades")]
 
 #nullable enable
 namespace OscarsInventoryTweaks {
 
-  public class Mod: FxMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_ID = "Oscar's Inventory Tweaks";
+
+    protected override string configPath => "OscarsInventoryTweaks.cfg";
 
     internal static readonly string[] TargetItemIDs = new string[] {
       Item.Fertilizer,
@@ -47,12 +50,11 @@ namespace OscarsInventoryTweaks {
     private static Preferences? preferences;
 
     public override void OnInitializeMelon() {
-      ConfigPath = "OscarsInventoryTweaks.cfg";
-      preferences = new Preferences(ConfigPath);
+      preferences = new Preferences(ConfigPath!);
       base.OnInitializeMelon();
     }
 
-    public override void OnPreferencesSaved() {
+    protected override void onModPreferencesSaved() {
       if (!InMainScene)
         return;
 
@@ -61,10 +63,6 @@ namespace OscarsInventoryTweaks {
 
     protected override void onLocalPlayerLoaded(Player _) {
       init();
-      //
-      // if (Oscar == null)
-      //   return;
-      //
       updateShopListings();
     }
 
@@ -104,7 +102,6 @@ namespace OscarsInventoryTweaks {
       List<ListingUI> uiListings,
       UIPanel listingPanel
     ) {
-      Logger.Debug("pruneDisabledListings()");
       // Remove any entries that were previously enabled, but are now disabled.
       foreach (var (itemID, record) in newListings) {
         if (record != null)
@@ -141,7 +138,6 @@ namespace OscarsInventoryTweaks {
       Dictionary<string, ShopListing?> newListings,
       List<ListingUI> uiListings
     ) {
-      Logger.Debug("injectNewListings()");
       #if MONO
       var createListingUI = typeof(ShopInterface)
         .GetMethod("CreateListingUI", BindingFlags.NonPublic | BindingFlags.Instance, null, new [] { typeof(ShopListing) }, null)!;

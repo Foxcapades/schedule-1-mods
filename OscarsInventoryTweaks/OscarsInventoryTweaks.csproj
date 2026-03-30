@@ -10,17 +10,4 @@
       <HintPath>$(AssembliesPath)/UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="../lib/Fxcpds/**"/>
-    <Compile Update="..\lib\Fxcpds\FxMod.cs">
-      <Link>Fxcpds\FxMod.cs</Link>
-    </Compile>
-    <Compile Update="..\lib\Fxcpds\Scene.cs">
-      <Link>Fxcpds\Scene.cs</Link>
-    </Compile>
-    <Compile Update="..\lib\Fxcpds\Debug.cs">
-      <Link>Fxcpds\Debug.cs</Link>
-    </Compile>
-  </ItemGroup>
 </Project>

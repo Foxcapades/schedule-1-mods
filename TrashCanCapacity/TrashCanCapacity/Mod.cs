@@ -1,3 +1,4 @@
+using Fxcpds;
 using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
@@ -18,12 +19,11 @@ using System;
 
 #nullable enable
 namespace TrashCanCapacity {
-  public class Mod: MelonMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_NAME = "TrashCanCapacity";
 
     private static MelonPreferences_Entry<float>? multiplier;
     private static float initialValue;
-    private static bool inMain;
 
     public override void OnInitializeMelon() {
       var category = MelonPreferences.CreateCategory(MOD_NAME);
@@ -36,26 +36,13 @@ namespace TrashCanCapacity {
       multiplier.OnEntryValueChanged.Subscribe(onPreferencesSaved);
     }
 
-    public override void OnSceneWasLoaded(int buildIndex, string sceneName) {
-      if (sceneName == "Main")
-        inMain = true;
-    }
-
-    public override void OnSceneWasUnloaded(int buildIndex, string sceneName) {
-      if (sceneName == "Main")
-        inMain = false;
-    }
-
-    private static void onPreferencesSaved(float o, float n) {
+    private void onPreferencesSaved(float o, float n) {
       if (!Mathf.Approximately(n, o))
         updateExisting();
     }
 
-    private static int calcCapacity() =>
-      (int) Math.Round(initialValue * multiplier!.Value, MidpointRounding.AwayFromZero);
-
-    private static void updateExisting() {
-      if (!inMain || initialValue == 0f)
+    private void updateExisting() {
+      if (!InMainScene || initialValue == 0f)
         return;
 
       foreach (var property in Property.Properties) {
@@ -64,6 +51,9 @@ namespace TrashCanCapacity {
         }
       }
     }
+
+    private static int calcCapacity() =>
+      (int) Math.Round(initialValue * multiplier!.Value, MidpointRounding.AwayFromZero);
 
     [HarmonyPatch(typeof(TrashContainerItem), nameof(TrashContainerItem.InitializeGridItem))]
     private static class Patch {

@@ -1,11 +1,9 @@
+using Fxcpds;
 using HarmonyLib;
 using MelonLoader;
-using MelonLoader.Preferences;
 #if IL2CPP
-using Il2CppInterop.Runtime;
 using Il2CppScheduleOne.GameTime;
 using Il2CppScheduleOne.PlayerScripts;
-using Il2CppSystem;
 #elif MONO
 using ScheduleOne.GameTime;
 using ScheduleOne.PlayerScripts;
@@ -16,37 +14,30 @@ using ScheduleOne.PlayerScripts;
 
 #nullable enable
 namespace DayLengthModifier {
-  public class Mod: MelonMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_NAME = "DayLengthModifier";
 
     private const float MIN_MULTIPLIER = 0.1f;
     private const float MAX_MULTIPLIER = 100f;
 
+    private static MelonPreferences_Entry<float>? modifier;
+
     public override void OnInitializeMelon() {
-      var validator = new Validator();
       var preferences = MelonPreferences.CreateCategory(MOD_NAME, "Day Length Modifier");
 
       modifier = preferences.CreateEntry(
         identifier: "modifier",
         display_name: "Day Length Multiplier",
         default_value: 1f,
-        validator: validator
+        validator: new NumberValidator<float>(MIN_MULTIPLIER, MAX_MULTIPLIER)
       );
-
-#if IL2CPP
-      Player.onPlayerSpawned += DelegateSupport.ConvertDelegate<Action<Player>>(action);
-#elif MONO
-      Player.onPlayerSpawned += action;
-#endif
     }
 
-    private static MelonPreferences_Entry<float>? modifier;
-
-    public override void OnPreferencesSaved(string filepath) {
+    protected override void onPlayerLoaded(Player _) {
       setTheDangThing();
     }
 
-    private static void action(Player _) {
+    protected override void onModPreferencesSaved() {
       setTheDangThing();
     }
 
@@ -56,27 +47,8 @@ namespace DayLengthModifier {
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(TimeManager), "Clean")]
-    static void timeManagerClean() {
+    private static void TimeManagerClean() {
       setTheDangThing();
-    }
-
-    private class Validator: ValueValidator {
-      public override bool IsValid(object value) {
-        var fValue = (float)value;
-        return fValue >= MIN_MULTIPLIER && fValue <= MAX_MULTIPLIER;
-      }
-
-      public override object EnsureValid(object value) {
-        var fValue = (float)value;
-
-        if (fValue < 0.1f)
-          return 0.1f;
-
-        if (fValue > 50f)
-          return 50f;
-
-        return fValue;
-      }
     }
   }
 }

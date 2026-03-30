@@ -1,3 +1,4 @@
+using Fxcpds;
 using MelonLoader;
 #if IL2CPP
 using Il2CppInterop.Runtime;
@@ -18,26 +19,24 @@ using ScheduleOne.Vision;
 
 #nullable enable
 namespace ObservantCops {
-  public class Mod: MelonMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_NAME = "Observant Cops";
 
     private const string STATE_LABEL = "holding_suspicious_item";
 
-    public override void OnSceneWasLoaded(int buildIndex, string sceneName) {
-      if (sceneName == "Main")
-        sceneSetup();
+    protected override void onMainUnloaded() {
+      teardown();
     }
 
-    public override void OnSceneWasUnloaded(int buildIndex, string sceneName) {
-      if (sceneName == "Main")
-        teardown();
+    protected override void onLocalPlayerLoaded(Player player) {
+      setupActions();
     }
 
-    private static void setupActions() {
+    private void setupActions() {
       var inv = PlayerSingleton<PlayerInventory>.Instance;
 
       if (inv == null) {
-        Melon<Mod>.Instance.LoggerInstance.Error("inventory was null");
+        LoggerInstance.Error("inventory was null");
         return;
       }
 
@@ -66,14 +65,8 @@ namespace ObservantCops {
       }
     }
 
-#if IL2CPP
-    private static Action? setupActionRef;
+    #if IL2CPP
     private static Action<int>? onEquipChangeRef;
-
-    private static void sceneSetup() {
-      setupActionRef = DelegateSupport.ConvertDelegate<Action>(setupActions);
-      Player.onLocalPlayerSpawned += setupActionRef;
-    }
 
     private static void playerSetup(PlayerInventory inv) {
       onEquipChangeRef = DelegateSupport.ConvertDelegate<Action<int>>(onEquippedSlotChanged);
@@ -81,20 +74,13 @@ namespace ObservantCops {
     }
 
     private static void teardown() {
-      if (setupActionRef != null)
-        Player.onLocalPlayerSpawned -= setupActionRef;
-
       if (onEquipChangeRef != null) {
         var inv = PlayerSingleton<PlayerInventory>.Instance;
         if (inv != null)
           inv.onEquippedSlotChanged -= onEquipChangeRef;
       }
     }
-#elif MONO
-    private static void sceneSetup() {
-      Player.onLocalPlayerSpawned += setupActions;
-    }
-
+    #elif MONO
     private static void playerSetup(PlayerInventory inv) {
       inv.onEquippedSlotChanged += onEquippedSlotChanged;
     }
@@ -107,6 +93,6 @@ namespace ObservantCops {
       if (inv != null)
         inv.onEquippedSlotChanged -= onEquippedSlotChanged;
     }
-#endif
+    #endif
   }
 }

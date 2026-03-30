@@ -1,3 +1,4 @@
+using Fxcpds;
 using HarmonyLib;
 using MelonLoader;
 #if IL2CPP
@@ -13,9 +14,6 @@ using ScheduleOne.Economy;
 namespace DisableDealBonuses {
   public class Mod: MelonMod {
     public const string MOD_NAME = "DisableDealBonuses";
-
-    public override void OnInitializeMelon() {
-    }
 
     [HarmonyPatch(typeof(Customer), nameof(Customer.ProcessHandover))]
     private static class CustomerPatch {

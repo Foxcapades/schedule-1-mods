@@ -18,6 +18,8 @@ else
 	NET_PATH := netstandard2.1
 endif
 
+INPUT_FILES := $(shell find $(PROJECT_ID) -type f -name '*.cs') $(shell find ../lib/Fxcpds -type f -name '*.cs')
+
 BUILD_TARGET := bin/$(CONFIGURATION)/$(NET_PATH)/$(BUILD_DLL)
 OUTPUT_TARGET := $(TARGET_DIRECTORY)/$(OUTPUT_DLL)
 RELEASE_ZIP := $(TARGET_DIRECTORY)/$(shell echo $(PROJECT_ID) | tr -d a-z | tr A-Z a-z)-$(LOWER_CONFIG)-v$(VERSION).zip
@@ -34,6 +36,7 @@ default:
 	@echo "TARGET_DIRECTORY  = $(TARGET_DIRECTORY)"
 	@echo "INSTALL_DIRECTORY = $(INSTALL_DIRECTORY)"
 	@echo "NET_PATH          = $(NET_PATH)"
+	@echo "INPUT_FILES       = $(INPUT_FILES)"
 	@echo "BUILD_TARGET      = $(BUILD_TARGET)"
 	@echo "OUTPUT_TARGET     = $(OUTPUT_TARGET)"
 	@echo "RELEASE_ZIP       = $(RELEASE_ZIP)"
@@ -70,7 +73,7 @@ build-il2cpp:
 package-il2cpp:
 	@$(MAKE) CONFIGURATION=Il2Cpp package
 
-$(BUILD_TARGET):
+$(BUILD_TARGET): $(INPUT_FILES)
 	dotnet build --configuration $(CONFIGURATION) --property:Lifecycle=$(LIFECYCLE)
 
 $(OUTPUT_TARGET): $(BUILD_TARGET)

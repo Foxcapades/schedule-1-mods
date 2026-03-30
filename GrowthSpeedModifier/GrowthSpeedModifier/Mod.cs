@@ -1,6 +1,6 @@
+using Fxcpds;
 using HarmonyLib;
 using MelonLoader;
-using MelonLoader.Preferences;
 #if IL2CPP
 using Il2CppScheduleOne.Growing;
 using Il2CppScheduleOne.ItemFramework;
@@ -14,7 +14,7 @@ using ScheduleOne.ItemFramework;
 
 #nullable enable
 namespace GrowthSpeedModifier {
-  public class Mod: MelonMod {
+  public class Mod: FxMod<Mod> {
     public const string MOD_NAME = "Growth Speed Modifiers";
 
     private const float MIN_MULTIPLIER = 0.1f;
@@ -25,7 +25,7 @@ namespace GrowthSpeedModifier {
     private static MelonPreferences_Entry<float>? weedModifier;
 
     public override void OnInitializeMelon() {
-      var validator = new Validator();
+      var validator   = new NumberValidator<float>(MIN_MULTIPLIER, MAX_MULTIPLIER);
       var preferences = MelonPreferences.CreateCategory(MOD_NAME, "Modifiers");
 
       cocaModifier = preferences.CreateEntry(
@@ -48,6 +48,22 @@ namespace GrowthSpeedModifier {
       );
     }
 
+    private static float getModifier(Plant plant) {
+      switch (plant.SeedDefinition.ID) {
+        case Item.CocaSeed:
+          return cocaModifier!.Value;
+
+        case Item.GranddaddyPurpleSeed:
+        case Item.GreenCrackSeed:
+        case Item.OGKushSeed:
+        case Item.SourDieselSeed:
+          return weedModifier!.Value;
+
+        default:
+          return 1f;
+      }
+    }
+
     [HarmonyPatch(typeof(ShroomColony), "SetGrowthPercentage")]
     private static class ShroomColonyPatch {
       static void Prefix(ref float percent, ShroomColony __instance) {
@@ -68,9 +84,6 @@ namespace GrowthSpeedModifier {
       static void SetNormalizedGrowthProgressPrefix(ref float progress, Plant __instance) {
         if (growth) {
           growth = false;
-          #if DEBUG
-          Melon<Mod>.Logger.Msg("speed grow unset");
-          #endif
           return;
         }
 
@@ -86,45 +99,7 @@ namespace GrowthSpeedModifier {
       static void AdditiveAppliedPrefix(AdditiveDefinition additive, bool isInitialApplication) {
         if (isInitialApplication && additive.InstantGrowth > 0f) {
           growth = true;
-          #if DEBUG
-          Melon<Mod>.Logger.Msg("speed grow used");
-          #endif
         }
-      }
-    }
-
-    private static float getModifier(Plant plant) {
-      switch (plant.SeedDefinition.ID) {
-        case "cocaseed":
-          return cocaModifier!.Value;
-
-        case "granddaddypurpleseed":
-        case "greencrackseed":
-        case "ogkushseed":
-        case "sourdieselseed":
-          return weedModifier!.Value;
-
-        default:
-          return 1f;
-      }
-    }
-
-    private sealed class Validator: ValueValidator {
-      public override bool IsValid(object value) {
-        var fValue = (float)value;
-        return fValue >= MIN_MULTIPLIER && fValue <= MAX_MULTIPLIER;
-      }
-
-      public override object EnsureValid(object value) {
-        var fValue = (float)value;
-
-        if (fValue < 0.1f)
-          return 0.1f;
-
-        if (fValue > 50f)
-          return 50f;
-
-        return fValue;
       }
     }
   }
