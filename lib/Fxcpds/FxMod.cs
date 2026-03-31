@@ -1,4 +1,4 @@
-using MelonLoader;
+using MelonLoader;0.1
 using MelonLoader.Utils;
 
 #if IL2CPP
@@ -17,7 +17,7 @@ namespace Fxcpds {
     protected const string SCENE_NAME_MAIN = "Main";
 
     private static FxMod? instance;
-    protected static FxMod Instance => instance!;
+    public static FxMod Instance => instance!;
 
     /// <summary>
     /// The current Unity scene name.

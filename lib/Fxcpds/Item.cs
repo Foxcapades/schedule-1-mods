@@ -34,6 +34,5 @@ namespace Fxcpds {
     public const string M1911Magazine        = "m1911mag";
     public const string RevolverCylinder     = "revolvercylinder";
     public const string ShotgunShell         = "shotgunshell";
-
   }
 }

@@ -19,5 +19,8 @@ namespace OscarsInventoryTweaks {
     public const string Fertilizer           = "fertilizer";
     public const string PGR                  = "pgr";
     public const string SpeedGrow            = "speedgrow";
+
+    public const string BigSprinkler = "bigsprinkler";
+    public const string PotSprinkler = "potsprinkler";
   }
 }

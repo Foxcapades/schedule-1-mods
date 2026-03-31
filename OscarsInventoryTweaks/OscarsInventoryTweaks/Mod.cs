@@ -18,7 +18,7 @@ using System.IO;
 #endif
 
 [assembly: MelonGame("TVGS", "Schedule I")]
-[assembly: MelonInfo(typeof(OscarsInventoryTweaks.Mod), OscarsInventoryTweaks.Mod.MOD_ID, "1.0.1", "Foxcapades")]
+[assembly: MelonInfo(typeof(OscarsInventoryTweaks.Mod), OscarsInventoryTweaks.Mod.MOD_ID, "1.1.0", "Foxcapades")]
 
 #nullable enable
 namespace OscarsInventoryTweaks {
@@ -32,6 +32,8 @@ namespace OscarsInventoryTweaks {
       Item.Fertilizer,
       Item.PGR,
       Item.SpeedGrow,
+
+      Item.BigSprinkler,
 
       Item.Locker,
 

@@ -22,6 +22,9 @@ namespace OscarsInventoryTweaks {
         case Item.SpeedGrow:
           return prefs.SellSpeedGrow;
 
+        case Item.BigSprinkler:
+          return prefs.SellBigSprinkler;
+
         case Item.Locker:
           return prefs.SellLocker;
 
@@ -48,6 +51,9 @@ namespace OscarsInventoryTweaks {
         case Item.SpeedGrow:
           return Item.ExtraLongLifeSoil;
 
+        case Item.BigSprinkler:
+          return Item.PotSprinkler;
+
         default:
           return Item.Bed;
       }
@@ -60,7 +66,7 @@ namespace OscarsInventoryTweaks {
       var field = typeof(ShopInterface)
         .GetField("listingUI", BindingFlags.NonPublic | BindingFlags.Instance);
 
-      Mod.Logger.Debug("reflectively got field {0}", field);
+      FxMod.Instance.LoggerInstance.Debug("reflectively got field {0}", field);
 
       return (List<ListingUI>) field!.GetValue(shop);
       #endif
@@ -73,7 +79,7 @@ namespace OscarsInventoryTweaks {
       var field = typeof(ShopInterface)
         .GetField("listingPanel", BindingFlags.NonPublic | BindingFlags.Instance);
 
-      Mod.Logger.Debug("reflectively got field {0}", field);
+      FxMod.Instance.LoggerInstance.Debug("reflectively got field {0}", field);
 
       return (UIPanel) field!.GetValue(shop);
       #endif
