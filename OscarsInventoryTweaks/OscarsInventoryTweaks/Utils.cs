@@ -1,9 +1,9 @@
-using Fxcpds;
 #if IL2CPP
 using Il2CppScheduleOne;
 using Il2CppScheduleOne.UI.Shop;
 using Il2CppSystem.Collections.Generic;
 #elif MONO
+using Fxcpds;
 using ScheduleOne;
 using ScheduleOne.UI.Shop;
 using System.Collections.Generic;
@@ -13,51 +13,31 @@ using System.Reflection;
 #nullable enable
 namespace OscarsInventoryTweaks {
   internal static class Utils {
-    public static bool IsEnabled(this Preferences prefs, string itemID) {
-      switch (itemID) {
-        case Item.Fertilizer:
-          return prefs.SellFertilizer;
-        case Item.PGR:
-          return prefs.SellPgr;
-        case Item.SpeedGrow:
-          return prefs.SellSpeedGrow;
 
-        case Item.BigSprinkler:
-          return prefs.SellBigSprinkler;
+    // IMPORTANT!!!!!
+    // I did a stupid, and tied the order of this array to the order of the all
+    // items array.  THESE MUST REMAIN IN THE SAME ORDER UNTIL I GET AROUND TO
+    // FIXING THIS.
+    public static (Item, bool)[] getItems(this Preferences prefs) =>
+      new [] {
+        (Item.Fertilizer, prefs.SellFertilizer),
+        (Item.PGR, prefs.SellPgr),
+        (Item.SpeedGrow, prefs.SellSpeedGrow),
 
-        case Item.Locker:
-          return prefs.SellLocker;
+        (Item.Locker, prefs.SellLocker),
 
-        case Item.SmallStorageCloset:
-        case Item.MediumStorageCloset:
-        case Item.LargeStorageCloset:
-        case Item.HugeStorageCloset:
-          return prefs.SellClosets;
+        (Item.BigSprinkler, prefs.SellBigSprinkler),
+        (Item.AirConditioner, prefs.SellAirCon),
 
-        case Item.SmallStorageRack:
-        case Item.MediumStorageRack:
-        case Item.LargeStorageRack:
-          return prefs.SellShelves;
+        (Item.SmallStorageCloset, prefs.SellClosets),
+        (Item.MediumStorageCloset, prefs.SellClosets),
+        (Item.LargeStorageCloset, prefs.SellClosets),
+        (Item.HugeStorageCloset, prefs.SellClosets),
 
-        default:
-          return false;
-      }
-    }
-
-    public static string AppearsAfter(this ShopListing item) {
-      switch (item.Item.ID) {
-        case Item.Fertilizer:
-        case Item.PGR:
-        case Item.SpeedGrow:
-          return Item.ExtraLongLifeSoil;
-
-        case Item.BigSprinkler:
-          return Item.PotSprinkler;
-
-        default:
-          return Item.Bed;
-      }
-    }
+        (Item.SmallStorageRack, prefs.SellShelves),
+        (Item.MediumStorageRack, prefs.SellShelves),
+        (Item.LargeStorageRack, prefs.SellShelves),
+      };
 
     public static List<ListingUI>? ListingUIItems(this ShopInterface shop) {
       #if IL2CPP

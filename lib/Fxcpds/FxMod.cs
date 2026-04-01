@@ -1,4 +1,4 @@
-using MelonLoader;0.1
+using MelonLoader;
 using MelonLoader.Utils;
 
 #if IL2CPP

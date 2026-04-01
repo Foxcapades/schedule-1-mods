@@ -1,7 +1,7 @@
 PROJECT_ID := $(shell basename ${PWD})
 VERSION := $(shell grep 'MelonInfo' $(PROJECT_ID)/Mod.cs | cut -d'"' -f2 | tr -d '\n')
 
-LIFECYCLE := RELEASE
+LIFECYCLE := DEBUG
 CONFIGURATION := Il2Cpp
 
 LOWER_CONFIG := $(shell echo $(CONFIGURATION) | tr A-Z a-z)
@@ -55,23 +55,24 @@ install: build
 	fi
 
 .PHONY: release
+release: LIFECYCLE := RELEASE
 release: package-il2cpp package-mono
 
 .PHONY: build-mono
 build-mono:
-	@$(MAKE) CONFIGURATION=Mono build
+	@$(MAKE) CONFIGURATION=Mono LIFECYCLE=$(LIFECYCLE) build
 
 .PHONY: package-mono
 package-mono:
-	@$(MAKE) CONFIGURATION=Mono package
+	@$(MAKE) CONFIGURATION=Mono LIFECYCLE=$(LIFECYCLE) package
 
 .PHONY: build-mono
 build-il2cpp:
-	@$(MAKE) CONFIGURATION=Il2Cpp build
+	@$(MAKE) CONFIGURATION=Il2Cpp LIFECYCLE=$(LIFECYCLE) build
 
 .PHONY: package-mono
 package-il2cpp:
-	@$(MAKE) CONFIGURATION=Il2Cpp package
+	@$(MAKE) CONFIGURATION=Il2Cpp LIFECYCLE=$(LIFECYCLE) package
 
 $(BUILD_TARGET): $(INPUT_FILES)
 	dotnet build --configuration $(CONFIGURATION) --property:Lifecycle=$(LIFECYCLE)

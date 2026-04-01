@@ -14,40 +14,19 @@ using ScheduleOne.PlayerScripts;
 using ScheduleOne.UI.Shop;
 using System.Collections.Generic;
 using System.Reflection;
-using System.IO;
 #endif
 
 [assembly: MelonGame("TVGS", "Schedule I")]
-[assembly: MelonInfo(typeof(OscarsInventoryTweaks.Mod), OscarsInventoryTweaks.Mod.MOD_ID, "1.1.0", "Foxcapades")]
+[assembly: MelonInfo(typeof(OscarsInventoryTweaks.Mod), OscarsInventoryTweaks.Mod.MOD_ID, "1.2.0", "Foxcapades")]
 
 #nullable enable
 namespace OscarsInventoryTweaks {
-
   public class Mod: FxMod {
     public const string MOD_ID = "Oscar's Inventory Tweaks";
 
     protected override string configPath => "OscarsInventoryTweaks.cfg";
 
-    internal static readonly string[] TargetItemIDs = new string[] {
-      Item.Fertilizer,
-      Item.PGR,
-      Item.SpeedGrow,
-
-      Item.BigSprinkler,
-
-      Item.Locker,
-
-      Item.SmallStorageCloset,
-      Item.MediumStorageCloset,
-      Item.LargeStorageCloset,
-      Item.HugeStorageCloset,
-
-      Item.SmallStorageRack,
-      Item.MediumStorageRack,
-      Item.LargeStorageRack,
-    };
-
-    private static readonly ShopListing[] targetItemListings = new ShopListing[TargetItemIDs.Length];
+    private static readonly ShopListing[] targetItemListings = new ShopListing[Item.itemCount];
 
     private static Preferences? preferences;
 
@@ -73,10 +52,10 @@ namespace OscarsInventoryTweaks {
 
       var dan = NPC.Get<Dan>(NPC.Dan)!.ShopInterface;
 
-      for (var i = 0; i < TargetItemIDs.Length; i++) {
-        targetItemListings[i] = dan.GetListing(TargetItemIDs[i]);
+      for (var i = 0; i < Item.itemCount; i++) {
+        targetItemListings[i] = dan.GetListing(Item.allItems[i].id);
 
-        Instance.LoggerInstance.Debug("grabbed {0} listing from dan", targetItemListings[i]?.Item?.ID);
+        Instance.LoggerInstance.Debug("grabbed {0} listing from dan", targetItemListings[i].Item.ID);
       }
     }
 
@@ -87,10 +66,14 @@ namespace OscarsInventoryTweaks {
     }
 
     private static Dictionary<string, ShopListing?> buildListings() {
-      var listings = new Dictionary<string, ShopListing?>(TargetItemIDs.Length);
+      var listings = new Dictionary<string, ShopListing?>(Item.itemCount);
 
-      for (var i = 0; i < TargetItemIDs.Length; i++) {
-        listings[TargetItemIDs[i]] = preferences!.IsEnabled(TargetItemIDs[i])
+      var itemPrefs = preferences!.getItems();
+
+      for (var i = 0; i < itemPrefs.Length; i++) {
+        var (item, enabled) = itemPrefs[i];
+
+        listings[item.id] = enabled
           ? targetItemListings[i]
           : null;
       }
@@ -151,12 +134,14 @@ namespace OscarsInventoryTweaks {
         newListings.Remove(listing.Item.ID);
       }
 
-      for (var i = TargetItemIDs.Length - 1; i >= 0; i--) {
-        var item = TargetItemIDs[i];
+      for (var i = Item.allItems.Length - 1; i >= 0; i--) {
+        var item = Item.allItems[i];
 
-        if (!newListings.TryGetValue(item, out var value))
+        // If we don't have a listing for the item, don't try and insert it.
+        if (!newListings.TryGetValue(item.id, out var value))
           continue;
 
+        // If the listing was null, the item is disabled via prefs.
         if (value == null)
           continue;
 
@@ -169,22 +154,20 @@ namespace OscarsInventoryTweaks {
         createListingUI.Invoke(oscar, inputs);
         #endif
 
-        // Find the element after which we want to insert the new UI element.
-        var afterID = value.AppearsAfter();
-        var j = 0;
-        for (; j < uiListings.Count; j++)
-          if (uiListings[j].Listing.Item.ID == afterID)
-            break;
+        var insertAt = findInsertPosition(uiListings, item.category.appearsAfter);
 
-        // If the target was found, move the index of the element 1 ahead.
-        if (j < uiListings.Count)
-          j++;
-
-        // If the target element was found and was not the last item in the list
-        // move the new UI element to the correct position.
-        if (j < uiListings.Count)
-          moveItem(uiListings, uiListings.Count-1, j);
+        if (insertAt > -1)
+          moveItem(uiListings, uiListings.Count-1, insertAt);
       }
+    }
+
+    private static int findInsertPosition(List<ListingUI> list, string target) {
+      for (var i = 0; i < list.Count; i++) {
+        if (list[i].Listing.Item.ID == target)
+          return i + 1;
+      }
+
+      return -1;
     }
 
     private static void updateShopListings() {

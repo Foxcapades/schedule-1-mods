@@ -1,26 +1,85 @@
 #nullable enable
 namespace OscarsInventoryTweaks {
-  public static class Item {
-    public const string Bed                  = "bed";
+  internal readonly struct Category {
+    public static readonly Category Additives = new Category("Additives", "extralonglifesoil");
+    public static readonly Category Storage   = new Category("Storage", "bed");
+    public static readonly Category Equipment = new Category("Growing", "soilpourer");
 
-    public const string Locker               = "locker";
+    public static readonly Category[] allCategories = {
+      Additives,
+      Storage,
+      Equipment,
+    };
 
-    public const string SmallStorageCloset   = "smallstoragecloset";
-    public const string MediumStorageCloset  = "mediumstoragecloset";
-    public const string LargeStorageCloset   = "largestoragecloset";
-    public const string HugeStorageCloset    = "hugestoragecloset";
+    public readonly string name;
+    public readonly string appearsAfter;
 
-    public const string SmallStorageRack     = "smallstoragerack";
-    public const string MediumStorageRack    = "mediumstoragerack";
-    public const string LargeStorageRack     = "largestoragerack";
+    private Category(string name, string appearsAfter) {
+      this.name = name;
+      this.appearsAfter = appearsAfter;
+    }
 
-    public const string ExtraLongLifeSoil    = "extralonglifesoil";
+    public override bool Equals(object? obj) {
+      return obj != null && (obj as Category?)?.name == this.name;
+    }
 
-    public const string Fertilizer           = "fertilizer";
-    public const string PGR                  = "pgr";
-    public const string SpeedGrow            = "speedgrow";
+    public override int GetHashCode() {
+      return name.GetHashCode();
+    }
 
-    public const string BigSprinkler = "bigsprinkler";
-    public const string PotSprinkler = "potsprinkler";
+    public static bool operator ==(Category a, Category b) =>
+      a.name == b.name;
+
+    public static bool operator !=(Category a, Category b) =>
+      a.name != b.name;
+  }
+
+  internal readonly struct Item {
+    public static readonly Item Fertilizer = new Item("fertilizer", Category.Additives);
+    public static readonly Item PGR        = new Item("pgr", Category.Additives);
+    public static readonly Item SpeedGrow  = new Item("speedgrow", Category.Additives);
+
+    public static readonly Item Locker = new Item("locker", Category.Storage);
+
+    public static readonly Item SmallStorageCloset  = new Item("smallstoragecloset", Category.Storage);
+    public static readonly Item MediumStorageCloset = new Item("mediumstoragecloset", Category.Storage);
+    public static readonly Item LargeStorageCloset  = new Item("largestoragecloset", Category.Storage);
+    public static readonly Item HugeStorageCloset   = new Item("hugestoragecloset", Category.Storage);
+
+    public static readonly Item SmallStorageRack  = new Item("smallstoragerack", Category.Storage);
+    public static readonly Item MediumStorageRack = new Item("mediumstoragerack", Category.Storage);
+    public static readonly Item LargeStorageRack  = new Item("largestoragerack", Category.Storage);
+
+    public static readonly Item BigSprinkler   = new Item("bigsprinkler", Category.Equipment);
+    public static readonly Item AirConditioner = new Item("acunit", Category.Equipment);
+
+    public static int itemCount => allItems.Length;
+    public static readonly Item[] allItems = {
+      Fertilizer,
+      PGR,
+      SpeedGrow,
+
+      Locker,
+
+      BigSprinkler,
+      AirConditioner,
+
+      SmallStorageCloset,
+      MediumStorageCloset,
+      LargeStorageCloset,
+      HugeStorageCloset,
+
+      SmallStorageRack,
+      MediumStorageRack,
+      LargeStorageRack,
+    };
+
+    public readonly string id;
+    public readonly Category category;
+
+    private Item(string id, Category category) {
+      this.id = id;
+      this.category = category;
+    }
   }
 }
