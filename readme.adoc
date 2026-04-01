@@ -83,7 +83,7 @@ Makes cops notice when the player is openly holding an illegal item.
 Adds the Locker and growth additive items to Oscar's shop inventory.
 
 [none]
-* *Not currently published to mod sites*
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1784
 
 
 === link:RecommendedPrice/[Recommended Price]
