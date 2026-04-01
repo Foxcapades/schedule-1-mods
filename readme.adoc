@@ -80,7 +80,8 @@ Makes cops notice when the player is openly holding an illegal item.
 
 === link:OscarsInventoryTweaks/[Oscar's Inventory Tweaks]
 
-Adds the Locker and growth additive items to Oscar's shop inventory.
+Optionally adds growth additives, locker, ac unit, shelves, and closets to
+Oscar's shop inventory.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1784

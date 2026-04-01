@@ -1,0 +1,5 @@
+= Oscar's Inventory Tweaks
+
+Adds additional options to Oscar's shop inventory.
+
+image::../docs/OscarsInventoryTweaks/assets/options.png[]
