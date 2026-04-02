@@ -1,0 +1,5 @@
+argcomplete==3.6.3
+PyYAML==6.0.3
+tomlkit==0.14.0
+xmltodict==1.0.4
+yq==3.4.3
