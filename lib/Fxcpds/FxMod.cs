@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using MelonLoader;
 using MelonLoader.Utils;
 
@@ -80,24 +81,20 @@ namespace Fxcpds {
 
     public sealed override void OnPreferencesSaved(string filepath) {
       if (configPath != null && filepath.EndsWith(configPath)) {
-        LoggerInstance.Debug("calling onModPreferencesSaved()");
         onModPreferencesSaved();
       }
     }
 
     public override void OnPreferencesLoaded(string filepath) {
       if (configPath != null && filepath.EndsWith(configPath)) {
-        LoggerInstance.Debug("calling onModPreferencesLoaded()");
         onModPreferencesSaved();
       }
     }
 
     protected virtual void onModPreferencesSaved() {}
-    protected virtual void onModPreferencesLoaded() {}
 
     private void onPlayerSpawned(Player player) {
       if (player.IsLocalPlayer) {
-        LoggerInstance.Debug("local player loaded");
         onLocalPlayerLoaded(player);
       }
       onPlayerLoaded(player);

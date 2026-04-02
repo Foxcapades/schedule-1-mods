@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Fxcpds;
 using HarmonyLib;
 using MelonLoader;
@@ -11,11 +12,12 @@ using ScheduleOne.PlayerScripts;
 
 [assembly: MelonInfo(typeof(DayLengthModifier.Mod), DayLengthModifier.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
+[assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
 
 #nullable enable
 namespace DayLengthModifier {
   public class Mod: FxMod {
-    public const string MOD_NAME = "Day Length Modifier";
+    public const string MOD_NAME = "Adjustable Day Length";
 
     private const float MIN_MULTIPLIER = 0.1f;
     private const float MAX_MULTIPLIER = 60f;
@@ -23,7 +25,7 @@ namespace DayLengthModifier {
     private static MelonPreferences_Entry<float>? modifier;
 
     public override void OnInitializeMelon() {
-      var preferences = MelonPreferences.CreateCategory(MOD_NAME, "Day Length Modifier");
+      var preferences = MelonPreferences.CreateCategory("Day Length Modifier", "Day Length Modifier");
 
       modifier = preferences.CreateEntry(
         identifier: "modifier",
@@ -35,21 +37,17 @@ namespace DayLengthModifier {
     }
 
     protected override void onPlayerLoaded(Player _) {
-      setTheDangThing();
+      TimeManagerClean();
     }
 
     protected override void onModPreferencesSaved() {
-      setTheDangThing();
-    }
-
-    private static void setTheDangThing() {
-      TimeManager.Instance?.SetTimeSpeedMultiplier(1f/modifier!.Value);
+      TimeManagerClean();
     }
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(TimeManager), "Clean")]
     private static void TimeManagerClean() {
-      setTheDangThing();
+      TimeManager.Instance?.SetTimeSpeedMultiplier(1f/modifier!.Value);
     }
   }
 }
