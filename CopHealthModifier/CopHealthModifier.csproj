@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <RootNamespace>CopHealthModifier</RootNamespace>
+    <DefineConstants>$(DefineConstants);USE_ON_PLAYER_LOCAL</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

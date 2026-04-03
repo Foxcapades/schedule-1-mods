@@ -14,24 +14,15 @@ using ScheduleOne.ItemFramework;
 
 #nullable enable
 namespace GrowthSpeedModifier {
-  public class Mod: FxMod {
+  public class Mod: MelonMod {
     public const string MOD_NAME = "Growth Speed Modifiers";
-
-    private const float MIN_MULTIPLIER = 0.1f;
-    private const float MAX_MULTIPLIER = 50f;
-
-    private const string CocaSeed             = "cocaseed";
-    private const string GranddaddyPurpleSeed = "granddaddypurpleseed";
-    private const string GreenCrackSeed       = "greencrackseed";
-    private const string OGKushSeed           = "ogkushseed";
-    private const string SourDieselSeed       = "sourdieselseed";
 
     private static MelonPreferences_Entry<float>? cocaModifier;
     private static MelonPreferences_Entry<float>? shroomModifier;
     private static MelonPreferences_Entry<float>? weedModifier;
 
     public override void OnInitializeMelon() {
-      var validator   = new NumberValidator<float>(MIN_MULTIPLIER, MAX_MULTIPLIER);
+      var validator   = new NumberValidator<float>(0.1f, 50f);
       var preferences = MelonPreferences.CreateCategory(MOD_NAME, "Modifiers");
 
       cocaModifier = preferences.CreateEntry(
@@ -56,13 +47,13 @@ namespace GrowthSpeedModifier {
 
     private static float getModifier(Plant plant) {
       switch (plant.SeedDefinition.ID) {
-        case CocaSeed:
+        case "cocaseed":
           return cocaModifier!.Value;
 
-        case GranddaddyPurpleSeed:
-        case GreenCrackSeed:
-        case OGKushSeed:
-        case SourDieselSeed:
+        case "granddaddypurpleseed":
+        case "greencrackseed":
+        case "ogkushseed":
+        case "sourdieselseed":
           return weedModifier!.Value;
 
         default:

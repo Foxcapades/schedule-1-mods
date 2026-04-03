@@ -3,10 +3,10 @@
 
   <PropertyGroup>
     <RootNamespace>ObservantCops</RootNamespace>
+    <DefineConstants>$(DefineConstants);USE_ON_MAIN;USE_ON_PLAYER_LOCAL</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="../lib/Fxcpds/FxMod.cs"/>
-    <Compile Include="../lib/Fxcpds/Debug.cs"/>
   </ItemGroup>
 </Project>

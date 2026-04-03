@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="../lib/Fxcpds/FxMod.cs"/>
-    <Compile Include="../lib/Fxcpds/Debug.cs"/>
     <Compile Include="../lib/Fxcpds/NumberValidator.cs"/>
   </ItemGroup>
 </Project>

@@ -3,10 +3,10 @@
 
   <PropertyGroup>
     <RootNamespace>RecommendedPrice</RootNamespace>
+    <DefineConstants>$(DefineConstants);USE_SCENES</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="../lib/Fxcpds/FxMod.cs"/>
-    <Compile Include="../lib/Fxcpds/Debug.cs"/>
   </ItemGroup>
 </Project>

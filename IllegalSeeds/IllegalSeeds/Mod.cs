@@ -18,26 +18,20 @@ namespace IllegalSeeds {
   public class Mod: FxMod {
     public const string MOD_NAME = "Illegal Seeds";
 
-    private const string CocaSeed             = "cocaseed";
-    private const string GranddaddyPurpleSeed = "granddaddypurpleseed";
-    private const string GreenCrackSeed       = "greencrackseed";
-    private const string OGKushSeed           = "ogkushseed";
-    private const string SourDieselSeed       = "sourdieselseed";
-
     protected override void onMainLoaded() {
       foreach (var item in Singleton<Registry>.Instance.GetAllItems()) {
         if (item.Category != EItemCategory.Agriculture)
           continue;
 
         switch (item.ID) {
-          case CocaSeed:
+          case "cocaseed":
             item.legalStatus = ELegalStatus.HighSeverityDrug;
             break;
 
-          case GranddaddyPurpleSeed:
-          case GreenCrackSeed:
-          case OGKushSeed:
-          case SourDieselSeed:
+          case "granddaddypurpleseed":
+          case "greencrackseed":
+          case "ogkushseed":
+          case "sourdieselseed":
             item.legalStatus = ELegalStatus.ModerateSeverityDrug;
             break;
         }

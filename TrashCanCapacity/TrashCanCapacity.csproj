@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <RootNamespace>TrashCanCapacity</RootNamespace>
+    <DefineConstants>$(DefineConstants);USE_SCENES</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Il2Cpp|AnyCPU' ">
@@ -23,6 +24,6 @@
 
   <ItemGroup>
     <Compile Include="../lib/Fxcpds/FxMod.cs"/>
-    <Compile Include="../lib/Fxcpds/Debug.cs"/>
+    <Compile Include="../lib/Fxcpds/NumberValidator.cs"/>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <Configurations>Il2Cpp;Mono</Configurations>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Il2Cpp'">

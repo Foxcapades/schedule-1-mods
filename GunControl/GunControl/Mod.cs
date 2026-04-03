@@ -1,5 +1,6 @@
 using Fxcpds;
 using MelonLoader;
+using System.Diagnostics;
 #if IL2CPP
 using Il2CppScheduleOne;
 using Il2CppScheduleOne.DevUtilities;
@@ -10,6 +11,7 @@ using ScheduleOne.DevUtilities;
 using ScheduleOne.Core.Items.Framework;
 #endif
 
+[assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
 [assembly: MelonInfo(typeof(GunControl.Mod), GunControl.Mod.MOD_NAME, "1.1.0", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
 
@@ -17,14 +19,6 @@ using ScheduleOne.Core.Items.Framework;
 namespace GunControl {
   public class Mod: FxMod {
     public const string MOD_NAME = "Gun Control";
-
-    private const string M1911       = "m1911";
-    private const string PumpShotgun = "pumpshotgun";
-    private const string Revolver    = "revolver";
-
-    private const string M1911Magazine    = "m1911mag";
-    private const string RevolverCylinder = "revolvercylinder";
-    private const string ShotgunShell     = "shotgunshell";
 
     protected override void onMainLoaded() {
       var items = Singleton<Registry>.Instance.GetAllItems();
@@ -34,14 +28,14 @@ namespace GunControl {
           continue;
 
         switch (item.ID) {
-          case M1911:
-          case Revolver:
-          case PumpShotgun:
+          case "m1911":
+          case "revolver":
+          case "pumpshotgun":
             item.legalStatus = ELegalStatus.HighSeverityDrug;
             break;
-          case M1911Magazine:
-          case RevolverCylinder:
-          case ShotgunShell:
+          case "m1911mag":
+          case "revolvercylinder":
+          case "shotgunshell":
             item.legalStatus = ELegalStatus.ModerateSeverityDrug;
             break;
         }

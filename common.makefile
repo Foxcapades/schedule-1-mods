@@ -47,6 +47,10 @@ build: $(OUTPUT_TARGET)
 .PHONY: package
 package: $(RELEASE_ZIP)
 
+.PHONY: clean
+clean:
+	@rm -rf obj bin target
+
 .PHONY: install
 install: build
 	@if [ ! -z "$(INSTALL_DIRECTORY)" ]; then \

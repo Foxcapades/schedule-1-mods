@@ -35,18 +35,23 @@ namespace RecommendedPrice {
 
     public override void OnInitializeMelon() {
       preferences = MelonPreferences.CreateCategory("Recommended Price", "Recommended Price");
+
       weedModifier = preferences.CreateEntry("weedModifier", 1f, "Weed Price Multiplier");
+      weedModifier.OnEntryValueChanged.Subscribe(onPrefChange);
+
       cokeModifier = preferences.CreateEntry("cocaineModifier", 1f, "Cocaine Price Multiplier");
+      cokeModifier.OnEntryValueChanged.Subscribe(onPrefChange);
+
       methModifier = preferences.CreateEntry("methModifier", 1f, "Meth Price Multiplier");
+      methModifier.OnEntryValueChanged.Subscribe(onPrefChange);
+
       shrmModifier = preferences.CreateEntry("shoomModifier", 1f, "Shroom Price Multiplier");
+      shrmModifier.OnEntryValueChanged.Subscribe(onPrefChange);
     }
 
-    protected override void onModPreferencesLoaded() {
-      applyInMainOnly();
-    }
-
-    protected override void onModPreferencesSaved() {
-      applyInMainOnly();
+    private void onPrefChange(float o, float n) {
+      if (!Mathf.Approximately(o, n))
+        applyInMainOnly();
     }
 
     [HarmonyPrefix]

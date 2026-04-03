@@ -85,7 +85,7 @@ namespace ObservantCops {
       inv.onEquippedSlotChanged += onEquippedSlotChanged;
     }
 
-    private static void teardown() {
+    private void teardown() {
       Player.onLocalPlayerSpawned -= setupActions;
 
       var inv = PlayerSingleton<PlayerInventory>.Instance;

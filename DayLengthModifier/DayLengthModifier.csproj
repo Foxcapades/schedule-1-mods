@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <RootNamespace>DayLengthModifier</RootNamespace>
+    <DefineConstants>$(DefineConstants);USE_ON_PLAYER</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
