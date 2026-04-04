@@ -13,7 +13,7 @@ using ScheduleOne.PlayerScripts;
 
 [assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
 [assembly: MelonGame("TVGS", "Schedule I")]
-[assembly: MelonInfo(typeof(DayLengthModifier.Mod), DayLengthModifier.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
+[assembly: MelonInfo(typeof(DayLengthModifier.Mod), DayLengthModifier.Mod.MOD_NAME, "1.0.1", "Foxcapades")]
 
 namespace DayLengthModifier {
   public class Mod: FxMod {
