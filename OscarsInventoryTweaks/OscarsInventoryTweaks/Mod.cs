@@ -48,14 +48,14 @@ namespace OscarsInventoryTweaks {
     }
 
     private static void init() {
-      Instance.LoggerInstance.Debug("initializing");
-
       var dan = NPC.Get<Dan>(NPC.Dan)!.ShopInterface;
 
       for (var i = 0; i < Item.itemCount; i++) {
         targetItemListings[i] = dan.GetListing(Item.allItems[i].id);
 
+        #if !RELEASE
         Instance.LoggerInstance.Debug("grabbed {0} listing from dan", targetItemListings[i].Item.ID);
+        #endif
       }
     }
 
@@ -95,7 +95,9 @@ namespace OscarsInventoryTweaks {
         var result = oscar.GetListing(itemID);
 
         if (result != null) {
+          #if !RELEASE
           Instance.LoggerInstance.Debug("removing {0} from Oscar's inventory", itemID);
+          #endif
           oscar.Listings.Remove(result);
 
           ListingUI? uiListing = null;
@@ -174,19 +176,25 @@ namespace OscarsInventoryTweaks {
       var oscar = NPC.Get<Oscar>(NPC.Oscar)?.ShopInterface;
 
       if (oscar == null) {
+        #if !RELEASE
         Instance.LoggerInstance.Debug("oscar was null");
+        #endif
         return;
       }
 
       var uiListings = oscar.ListingUIItems();
       if (uiListings == null) {
+        #if !RELEASE
         Instance.LoggerInstance.Debug("uiListings was null");
+        #endif
         return;
       }
 
       var uiPanel = oscar.ListingPanel();
       if (uiPanel == null) {
+        #if !RELEASE
         Instance.LoggerInstance.Debug("uiPanel was null");
+        #endif
         return;
       }
 

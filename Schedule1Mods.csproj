@@ -4,10 +4,12 @@
   <PropertyGroup>
     <Configurations>Il2Cpp;Mono</Configurations>
     <Nullable>enable</Nullable>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Il2Cpp'">
     <TargetFramework>net6.0</TargetFramework>
+    <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Mono'">
