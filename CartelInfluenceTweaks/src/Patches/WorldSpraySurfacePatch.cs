@@ -8,8 +8,10 @@ using ScheduleOne.Graffiti;
 #endif
 
 namespace CartelInfluenceTweaks.Patches {
+
   [HarmonyPatch(typeof(WorldSpraySurface))]
   internal static class WorldSpraySurfacePatch {
+
     [HarmonyPrefix]
     [HarmonyPatch("Reward")]
     static void RewardPrefix(WorldSpraySurface __instance) {

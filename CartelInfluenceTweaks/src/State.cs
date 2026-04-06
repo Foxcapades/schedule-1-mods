@@ -9,6 +9,7 @@ namespace CartelInfluenceTweaks {
 
     CustomerStolen,
     PlayerDeal,
+    PlayerProxyDeal,
 
     CartelGraffiti,
     CartelDeal,

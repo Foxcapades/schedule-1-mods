@@ -16,6 +16,7 @@ using ScheduleOne.Map;
 [assembly: MelonInfo(typeof(CartelInfluenceTweaks.Mod), CartelInfluenceTweaks.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
 
 namespace CartelInfluenceTweaks {
+
   public class Mod: FxMod {
     public const string MOD_NAME = "Cartel Influence Tweaks";
 

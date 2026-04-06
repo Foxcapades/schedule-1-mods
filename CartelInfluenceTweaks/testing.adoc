@@ -1,19 +1,29 @@
-= Testing Results
+= TODO
+:icons: font
 
-== Features
+== Implementation
 
-=== Graffiti Removal
+* Player-hired dealer on deal complete influence change.
+* Visual notifications for non-standard influence changes.
 
-|===
-| 10x | yes
-| 1x  | ?
-| 0x  | ?
-|===
+== Testing
 
-=== Single Thug Kill
+=== Feature Checklist
 
-|===
-| 10x | no
-| 1x  | ?
-| 0x  | ?
-|===
+.Cartel Influence Losses
+* [ ] Cartel Graffiti Cleaned
+* [ ] Player Graffiti Created
+* [ ] Cartel Graffiti Interrupted
+* [ ] Cartel Dealer Defeated
+* [ ] Cartel Ambush Defeated
+* [ ] Player Customer Gained
+* [ ] Player Deal Completed
+* [ ] Employee Deal Completed
+
+.Cartel Influence Gains
+* [ ] Cartel Graffiti Completed
+* [ ] Cartel Deal Completed
+
+.Meta Features
+* [ ] Influence Notification on Cartel Influence Gains
+* [ ] Influence Notification on Nonstandard Cartel Influence Losses

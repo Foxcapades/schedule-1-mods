@@ -10,8 +10,14 @@ using ScheduleOne.Map;
 #endif
 
 namespace CartelInfluenceTweaks.Patches {
-  [HarmonyPatch(typeof(CartelInfluence), nameof(CartelInfluence.ChangeInfluence), typeof(EMapRegion), typeof(float))]
+
+  [HarmonyPatch(
+    typeof(CartelInfluence),
+    nameof(CartelInfluence.ChangeInfluence),
+    new[] {typeof(EMapRegion), typeof(float)}
+  )]
   internal class CartelInfluencePatch {
+
     static bool Prefix(EMapRegion region, ref float amount) {
       if (!Mod.shouldListen()) {
         #if !RELEASE
@@ -36,50 +42,53 @@ namespace CartelInfluenceTweaks.Patches {
         return true;
       }
 
-      float multiplier = 1f;
+      float changeAmount;
 
       switch (state) {
         case State.GraffitiCleaned:
-          multiplier = Mod.preferences.graffitiRemoved;
+          changeAmount = Mod.preferences.graffitiRemovalChange;
           break;
         case State.GraffitiCreated:
-          multiplier = Mod.preferences.graffitiCreated;
+          changeAmount = Mod.preferences.graffitiCreationChange;
           break;
         case State.GraffitiInterrupted:
-          multiplier = Mod.preferences.graffitiInterrupted;
+          changeAmount = Mod.preferences.graffitiInterruptedChange;
           break;
         case State.DealerDefeated:
-          multiplier = Mod.preferences.killedDealer;
+          changeAmount = Mod.preferences.dealerKilledChange;
           break;
         case State.AmbushDefeated:
-          multiplier = Mod.preferences.killedAmbush;
+          changeAmount = Mod.preferences.ambushKilledChange;
           break;
         case State.CustomerStolen:
-          multiplier = Mod.preferences.customerGained;
+          changeAmount = Mod.preferences.customerGainedChange;
           break;
 
         // New features.
         case State.PlayerDeal:
-          multiplier = Mod.preferences.playerDeal / 100;
+          changeAmount = Mod.preferences.playerDealChange;
           break;
         case State.CartelGraffiti:
-          multiplier = Mod.preferences.cartelGraffiti / 100;
+          changeAmount = Mod.preferences.cartelGraffitiChange;
           break;
         case State.CartelDeal:
-          multiplier = Mod.preferences.cartelDeal / 100;
+          changeAmount = Mod.preferences.cartelDealChange;
+          break;
+        case State.PlayerProxyDeal:
+          changeAmount = Mod.preferences.playerProxyDealChange;
           break;
         default:
           FxMod.Instance.LoggerInstance.Error("unrecognized state " + state);
-          break;
+          return true;
       }
 
-      var newAmount = amount * multiplier;
+      changeAmount /= 100;
 
       #if !RELEASE
-      FxMod.Instance.LoggerInstance.Debug("applying multiplier {0} to {1} influence change {2} = {3}", multiplier, region, amount, newAmount);
+      FxMod.Instance.LoggerInstance.Debug("adjusting {0} cartel influence change from {1} to {2}", region, amount, changeAmount);
       #endif
 
-      amount = newAmount;
+      amount = changeAmount;
 
       return amount != 0;
     }

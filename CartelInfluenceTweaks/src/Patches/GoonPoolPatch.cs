@@ -47,7 +47,7 @@ namespace CartelInfluenceTweaks.Patches {
       #endif
 
       #if !RELEASE
-      FxMod.Logger.Debug("registering new goon counter");
+      FxMod.Instance.LoggerInstance.Debug("registering new goon counter");
       #endif
 
       this.register();
@@ -59,7 +59,7 @@ namespace CartelInfluenceTweaks.Patches {
         return;
       }
       #if !RELEASE
-      FxMod.Logger.Debug("{0} goons remaining in pool", remaining);
+      FxMod.Instance.LoggerInstance.Debug("{0} goons remaining in pool", remaining);
       #endif
     }
 
@@ -70,14 +70,14 @@ namespace CartelInfluenceTweaks.Patches {
 
     private void deregister() {
       if (goons == null) {
-        FxMod.Logger.Error("attempted to deregister goon pool more than once");
+        FxMod.Instance.LoggerInstance.Error("attempted to deregister goon pool more than once");
         return;
       }
 
       Mod.pushState(goons[0].Region, State.AmbushDefeated);
 
       #if !RELEASE
-      FxMod.Logger.Debug("deregistering goon counter");
+      FxMod.Instance.LoggerInstance.Debug("deregistering goon counter");
       #endif
 
       foreach (var goon in goons) {

@@ -13,12 +13,11 @@ using System.IO;
 
 #nullable enable
 namespace Fxcpds {
+
   public abstract class FxMod: MelonMod {
 
     private static FxMod? instance;
     public static FxMod Instance => instance!;
-
-    public static MelonLogger.Instance Logger => Instance.LoggerInstance;
 
     #if USE_ON_MAIN || USE_SCENES
     protected const string SCENE_NAME_MAIN = "Main";

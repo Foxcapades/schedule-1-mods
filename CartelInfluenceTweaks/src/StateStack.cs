@@ -5,6 +5,10 @@ using ScheduleOne.Map;
 #endif
 
 namespace CartelInfluenceTweaks {
+
+  /// <summary>
+  /// Queued influence change states as a singly linked list.
+  /// </summary>
   internal class StateStack {
     private StackNode? first;
 

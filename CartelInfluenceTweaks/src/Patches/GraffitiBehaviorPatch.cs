@@ -14,8 +14,7 @@ using System.Reflection;
 #endif
 
 namespace CartelInfluenceTweaks.Patches {
-  // Patch graffiti behavior disable to handle when a cartel thug is interrupted
-  // by a player.
+
   [HarmonyPatch(typeof(GraffitiBehaviour), nameof(GraffitiBehaviour.Disable))]
   public static class GraffitiBehaviorPatch {
 
