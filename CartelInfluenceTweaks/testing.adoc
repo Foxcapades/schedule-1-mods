@@ -1,0 +1,19 @@
+= Testing Results
+
+== Features
+
+=== Graffiti Removal
+
+|===
+| 10x | yes
+| 1x  | ?
+| 0x  | ?
+|===
+
+=== Single Thug Kill
+
+|===
+| 10x | no
+| 1x  | ?
+| 0x  | ?
+|===

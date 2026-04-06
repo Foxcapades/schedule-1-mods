@@ -1,4 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{13B967F5-1B22-4FA6-AEF5-51612979A449}") = "CartelInfluenceTweaks", "CartelInfluenceTweaks\CartelInfluenceTweaks.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+EndProject
 Project("{32F4908B-F530-4E0E-9CD6-D89473EE821A}") = "CopHealthModifier", "CopHealthModifier/CopHealthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Project("{43B2DA6D-2B83-4ECB-AD8A-538FD16D26C4}") = "DayLengthModifier", "DayLengthModifier/DayLengthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
