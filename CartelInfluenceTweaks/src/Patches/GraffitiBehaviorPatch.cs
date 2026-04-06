@@ -78,14 +78,16 @@ namespace CartelInfluenceTweaks.Patches {
     /// awarded.</param>
     // ReSharper disable once UnusedMember.Local InvalidXmlDocComment
     static void Postfix(GraffitiBehaviour __instance, bool __state) {
+      if (!__state)
+        return;
+
       var region = __instance.getSurface().Region;
 
       #if !RELEASE
       FxMod.Instance.LoggerInstance.Debug("GraffitiBehavior.Disable.Postfix({0})", region);
       #endif
 
-      if (__state)
-        Cartel.Instance.Influence.ChangeInfluence(region, 1f);
+      Cartel.Instance.Influence.ChangeInfluence(region, 1f);
 
       Mod.commonPostfix(region);
     }
