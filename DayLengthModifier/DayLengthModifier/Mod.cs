@@ -13,11 +13,11 @@ using ScheduleOne.PlayerScripts;
 
 [assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
 [assembly: MelonGame("TVGS", "Schedule I")]
-[assembly: MelonInfo(typeof(DayLengthModifier.Mod), DayLengthModifier.Mod.MOD_NAME, "1.0.1", "Foxcapades")]
+[assembly: MelonInfo(typeof(DayLengthModifier.Mod), DayLengthModifier.Mod.MOD_NAME, "1.0.2", "Foxcapades")]
 
 namespace DayLengthModifier {
   public class Mod: FxMod {
-    public const string MOD_NAME = "Adjustable Day Length";
+    public const string MOD_NAME = "Day Length Modifier";
 
     private const float MIN_MULTIPLIER = 0.1f;
     private const float MAX_MULTIPLIER = 60f;
@@ -25,7 +25,7 @@ namespace DayLengthModifier {
     private static MelonPreferences_Entry<float>? modifier;
 
     public override void OnInitializeMelon() {
-      var preferences = MelonPreferences.CreateCategory("Day Length Modifier", "Day Length Modifier");
+      var preferences = MelonPreferences.CreateCategory(MOD_NAME, MOD_NAME);
 
       (modifier = preferences.CreateEntry(
         identifier: "modifier",
