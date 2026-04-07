@@ -77,6 +77,9 @@ namespace CartelInfluenceTweaks.Patches {
         case State.PlayerProxyDeal:
           changeAmount = Mod.preferences.playerProxyDealChange;
           break;
+        case State.PlayerDefated:
+          changeAmount = amount;
+          break;
         default:
           FxMod.Instance.LoggerInstance.Error("unrecognized state " + state);
           return true;
@@ -85,7 +88,12 @@ namespace CartelInfluenceTweaks.Patches {
       changeAmount /= 100;
 
       #if !RELEASE
-      FxMod.Instance.LoggerInstance.Debug("adjusting {0} cartel influence change from {1} to {2}", region, amount, changeAmount);
+      FxMod.Instance.LoggerInstance.Debug(
+        "replacing {0} cartel influence change {1} with {2}",
+        region,
+        amount,
+        changeAmount
+      );
       #endif
 
       amount = changeAmount;

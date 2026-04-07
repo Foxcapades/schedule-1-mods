@@ -3,7 +3,6 @@ using HarmonyLib;
 using System.Collections;
 
 #if IL2CPP
-using Il2CppInterop.Runtime;
 using Il2CppScheduleOne.Cartel;
 #elif MONO
 using ScheduleOne.Cartel;

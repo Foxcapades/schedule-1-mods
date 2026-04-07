@@ -1,6 +1,12 @@
 using System;
-using ScheduleOne.Cartel;
 using UnityEngine.Events;
+
+#if IL2CPP
+using Il2CppInterop.Runtime;
+using Il2CppScheduleOne.Cartel;
+#elif MONO
+using ScheduleOne.Cartel;
+#endif
 
 namespace CartelInfluenceTweaks.Patches.Dealers {
   internal class CartelDealerWatcher {
@@ -27,7 +33,7 @@ namespace CartelInfluenceTweaks.Patches.Dealers {
 
     private void onDealImpl() {
       Mod.pushState(dealer.Region, State.CartelDeal);
-      Cartel.Instance.Influence.ChangeInfluence(dealer.Region, 1f);
+      Cartel.Instance.Influence.ChangeInfluence(dealer.Region, 0f);
     }
 
     private void onDeathImpl() {

@@ -1,0 +1,58 @@
+using Fxcpds;
+using HarmonyLib;
+using UnityEngine;
+
+#if IL2CPP
+using Il2CppScheduleOne.Cartel;
+using Il2CppScheduleOne.Map;
+using Il2CppScheduleOne.PlayerScripts;
+using Il2CppSystem.Collections.Generic;
+#elif MONO
+using ScheduleOne.Cartel;
+using ScheduleOne.Map;
+using ScheduleOne.PlayerScripts;
+using System.Collections.Generic;
+#endif
+
+using CounterList = System.Collections.Generic.List<CartelInfluenceTweaks.handlers.ambush.AmbushTracker>;
+
+namespace CartelInfluenceTweaks.handlers.ambush {
+
+  internal static class AmbushHandler {
+    private static readonly CounterList activeAmbushes = new CounterList(2);
+
+    internal static void registerAmbush(
+      Player target,
+      List<CartelGoon> goons,
+      EMapRegion region
+    ) {
+      activeAmbushes.Add(new AmbushTracker(region, target, goons, deregisterAmbush));
+    }
+
+    private static void deregisterAmbush(AmbushTracker tracker) {
+      activeAmbushes.Remove(tracker);
+    }
+
+    [HarmonyPatch(typeof(Ambush))]
+    private static class AmbushPatch {
+      [HarmonyPostfix]
+      [HarmonyPatch("SpawnAmbush", typeof(Player), typeof(Vector3[]))]
+      static void SpawnAmbush(
+        Ambush __instance,
+        List<CartelGoon> __result,
+        Player target,
+        Vector3[] potentialSpawnPoints
+      ) {
+        #if !RELEASE
+        FxMod.Instance.LoggerInstance.Debug(
+          "registering cartel ambush targeting {0} in {1}",
+          target.PlayerName,
+          __instance.Region
+        );
+        #endif
+
+        registerAmbush(target, __result, __instance.Region);
+      }
+    }
+  }
+}

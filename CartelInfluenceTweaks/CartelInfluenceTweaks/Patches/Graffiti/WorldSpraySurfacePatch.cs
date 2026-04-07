@@ -18,6 +18,7 @@ namespace CartelInfluenceTweaks.Patches.Graffiti {
       #if !RELEASE
       FxMod.Instance.LoggerInstance.Debug("WorldSpraySurfacePatch.RewardPrefix({0})", __instance.Region);
       #endif
+
       if (Mod.shouldListen())
         Mod.pushState(__instance.Region, State.GraffitiCreated);
     }
@@ -28,6 +29,7 @@ namespace CartelInfluenceTweaks.Patches.Graffiti {
       #if !RELEASE
       FxMod.Instance.LoggerInstance.Debug("WorldSpraySurfacePatch.RewardPostfix({0})", __instance.Region);
       #endif
+
       Mod.commonPostfix(__instance.Region);
     }
 
@@ -37,6 +39,7 @@ namespace CartelInfluenceTweaks.Patches.Graffiti {
       #if !RELEASE
       FxMod.Instance.LoggerInstance.Debug("WorldSpraySurfacePatch.CleanPrefix({0})", __instance.Region);
       #endif
+
       if (Mod.shouldListen())
         Mod.pushState(__instance.Region, State.GraffitiCleaned);
     }
@@ -47,6 +50,7 @@ namespace CartelInfluenceTweaks.Patches.Graffiti {
       #if !RELEASE
       FxMod.Instance.LoggerInstance.Debug("WorldSpraySurfacePatch.CleanPostfix({0})", __instance.Region);
       #endif
+
       Mod.commonPostfix(__instance.Region);
     }
   }
