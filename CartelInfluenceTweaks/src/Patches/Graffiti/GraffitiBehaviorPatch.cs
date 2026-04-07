@@ -13,7 +13,7 @@ using ScheduleOne.NPCs.Behaviour;
 using System.Reflection;
 #endif
 
-namespace CartelInfluenceTweaks.Patches {
+namespace CartelInfluenceTweaks.Patches.Graffiti {
 
   [HarmonyPatch(typeof(GraffitiBehaviour), nameof(GraffitiBehaviour.Disable))]
   public static class GraffitiBehaviorPatch {

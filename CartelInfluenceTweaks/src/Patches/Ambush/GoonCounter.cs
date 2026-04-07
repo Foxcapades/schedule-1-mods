@@ -1,42 +1,24 @@
 using Fxcpds;
-using System.Collections;
+using Il2CppInterop.Runtime.Runtime;
+using System;
+using System.Collections.Generic;
 using UnityEngine.Events;
 
 #if IL2CPP
 using Il2CppInterop.Runtime;
 using Il2CppScheduleOne.Cartel;
-using Il2CppSystem.Collections.Generic;
-#elif MONO
-using ScheduleOne.Cartel;
-using System.Collections.Generic;
+using Il2CppScheduleOne.NPCs;
 #endif
 
-namespace CartelInfluenceTweaks.Patches {
-  internal delegate void Remover(object counter);
-
-  // [HarmonyPatch(typeof(GoonPool))]
-  internal class GoonPoolPatch {
-    private static readonly ArrayList counters = new ArrayList();
-
-    // [HarmonyPostfix]
-    // [HarmonyPatch(nameof(GoonPool.SpawnMultipleGoons))]
-    static void SpawnMultipleGoonsPostfix(List<CartelGoon> __result) {
-      #if !RELEASE
-      FxMod.Instance.LoggerInstance.Debug("GoonPool.SpawnMultipleGoons.Postfix(goonCount = {0})", __result.Count);
-      #endif
-
-      counters.Add(new GoonCounter(__result, counters.Remove));
-    }
-  }
-
+namespace CartelInfluenceTweaks.Patches.Ambush {
   internal class GoonCounter {
     private List<CartelGoon>? goons;
     private UnityAction? action;
-    private Remover? remover;
+    private Action<object>? remover;
 
     internal int remaining { get; private set; }
 
-    internal GoonCounter(List<CartelGoon> goons, Remover remover) {
+    internal GoonCounter(List<CartelGoon> goons, Action<object> remover) {
       this.goons = goons;
       this.remaining = goons.Count;
       this.remover = remover;
@@ -58,9 +40,21 @@ namespace CartelInfluenceTweaks.Patches {
         deregister();
         return;
       }
+
       #if !RELEASE
       FxMod.Instance.LoggerInstance.Debug("{0} goons remaining in pool", remaining);
       #endif
+    }
+
+    private void onLastGoon() {
+
+    }
+
+    private void onFinalKnockout(NPC npc) {
+      var goon = Interop.cast<CartelGoon>(npc);
+
+      if (goon == null)
+        return;
     }
 
     private void register() {

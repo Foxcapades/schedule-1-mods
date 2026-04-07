@@ -8,11 +8,11 @@
 
 == Testing
 
-=== Feature Checklist
+=== Feature Test Checklist
 
 .Cartel Influence Losses
 * [ ] Cartel Graffiti Cleaned
-* [ ] Player Graffiti Created
+* [x] Player Graffiti Created
 * [ ] Cartel Graffiti Interrupted
 * [ ] Cartel Dealer Defeated
 * [ ] Cartel Ambush Defeated
@@ -21,8 +21,8 @@
 * [ ] Employee Deal Completed
 
 .Cartel Influence Gains
-* [ ] Cartel Graffiti Completed
-* [ ] Cartel Deal Completed
+* [x] Cartel Graffiti Completed
+* [x] Cartel Deal Completed
 
 .Meta Features
 * [ ] Influence Notification on Cartel Influence Gains
