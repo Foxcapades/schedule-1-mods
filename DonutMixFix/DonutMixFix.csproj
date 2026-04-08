@@ -1,7 +1,0 @@
-<Project>
-  <Import Project="../Schedule1Mods.csproj"/>
-
-  <PropertyGroup>
-    <RootNamespace>DonutMixFix</RootNamespace>
-  </PropertyGroup>
-</Project>

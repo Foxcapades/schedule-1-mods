@@ -1,0 +1,11 @@
+<Project>
+  <Import Project="../../Schedule1Mods.csproj"/>
+
+  <PropertyGroup>
+    <RootNamespace>GrowthSpeedModifier</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../lib/Fxcpds/NumberValidator.cs"/>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+<Project>
+  <Import Project="../../Schedule1Mods.csproj"/>
+
+  <PropertyGroup>
+    <RootNamespace>IllegalSeeds</RootNamespace>
+    <DefineConstants>$(DefineConstants);USE_ON_MAIN</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../lib/Fxcpds/FxMod.cs"/>
+  </ItemGroup>
+</Project>

@@ -1,18 +1,24 @@
-PROJECTS := $(shell find . -maxdepth 1 -type d -regex '\./[A-Z].+' -printf '%P ')
+PROJECTS := $(shell find ./mods -maxdepth 1 -type d -printf '%P ')
+PROJECT_PATHS := $(addprefix mods/,$(PROJECTS))
 CONFIGURATION := Il2Cpp
+
+.PHONY: default
+default:
+	@echo "PROJECTS = $(PROJECTS)"
+	@echo "CONFIGURATION = $(CONFIGURATION)"
 
 .PHONY: build-all
 build-all:
 	@for i in $(PROJECTS); do \
-		$(MAKE) -C $$i PROJECT_ID=$$i CONFIGURATION=$(CONFIGURATION) build; \
+		$(MAKE) -C mods/$$i PROJECT_ID=$$i CONFIGURATION=$(CONFIGURATION) build; \
 	done
 
 .PHONY: install
 install:
-	@$(MAKE) -C $(PROJECT) PROJECT_ID=$(PROJECT) install
+	@$(MAKE) -C mods/$(PROJECT) PROJECT_ID=$(PROJECT) install
 
 .PHONY: clean-all
 clean-all:
 	@for project in $(PROJECTS); do \
-		rm -rf "$${project}/bin" "$${project}/obj" "$${project}/target"; \
+		rm -rf "mods/$${project}/bin" "mods/$${project}/obj" "mods/$${project}/target"; \
 	done

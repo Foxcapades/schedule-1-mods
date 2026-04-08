@@ -1,0 +1,16 @@
+<Project>
+  <Import Project="../../Schedule1Mods.csproj"/>
+
+  <PropertyGroup>
+    <RootNamespace>CartelInfluenceTweaks</RootNamespace>
+    <DefineConstants>$(DefineConstants);USE_CONFIG_FILE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Include="../../lib/Fxcpds/Debug.cs" Condition="'$(Lifecycle)' != 'RELEASE'"/>
+    <Compile Include="../../lib/Fxcpds/FxMod.cs"/>
+    <Compile Include="../../lib/Fxcpds/Interop.cs"/>
+    <Compile Include="../../lib/Fxcpds/NumberValidator.cs"/>
+  </ItemGroup>
+</Project>
