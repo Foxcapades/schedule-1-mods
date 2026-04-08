@@ -12,8 +12,8 @@ using ScheduleOne.Cartel;
 using ScheduleOne.Map;
 #endif
 
-[assembly: MelonGame("TVGS", "Schedule I")]
 [assembly: MelonInfo(typeof(CartelInfluenceTweaks.Mod), CartelInfluenceTweaks.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
+[assembly: MelonGame("TVGS", "Schedule I")]
 
 namespace CartelInfluenceTweaks {
 
@@ -27,7 +27,7 @@ namespace CartelInfluenceTweaks {
     protected override string configPath => "CartelInfluenceTweaks.cfg";
 
     public override void OnInitializeMelon() {
-      preferences.init(this);
+      preferences.init(this); ;
     }
 
     internal static void pushState(EMapRegion region, State state) {

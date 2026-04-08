@@ -13,6 +13,6 @@ namespace CartelInfluenceTweaks {
 
     CartelGraffiti,
     CartelDeal,
-    PlayerDefated,
+    PlayerDefeated,
   }
 }

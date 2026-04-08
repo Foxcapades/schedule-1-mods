@@ -8,7 +8,7 @@ using Il2CppScheduleOne.Cartel;
 using ScheduleOne.Cartel;
 #endif
 
-namespace CartelInfluenceTweaks.Patches.Dealers {
+namespace CartelInfluenceTweaks.Handlers.Cartel {
 
   [HarmonyPatch(typeof(CartelDealer))]
   internal static class CartelDealerPatch {

@@ -9,7 +9,7 @@ using ScheduleOne.Cartel;
 using ScheduleOne.Map;
 #endif
 
-namespace CartelInfluenceTweaks.Patches {
+namespace CartelInfluenceTweaks.Handlers.Cartel {
 
   [HarmonyPatch(
     typeof(CartelInfluence),
@@ -77,7 +77,7 @@ namespace CartelInfluenceTweaks.Patches {
         case State.PlayerProxyDeal:
           changeAmount = Mod.preferences.playerProxyDealChange;
           break;
-        case State.PlayerDefated:
+        case State.PlayerDefeated:
           changeAmount = amount;
           break;
         default:

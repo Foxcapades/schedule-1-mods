@@ -9,12 +9,12 @@ using ScheduleOne.Cartel;
 using ScheduleOne.NPCs;
 #endif
 
-namespace CartelInfluenceTweaks.handlers.cartel {
+namespace CartelInfluenceTweaks.Handlers.Cartel {
   internal static class CartelGoonHandler {
     internal static event Action<CartelGoon>? onDefeated;
 
     static CartelGoonHandler() {
-      npcs.NPCHealthHandler.onDieOrKnockout += onDieOrKnockout;
+      NPCs.NPCHealthHandler.onDieOrKnockout += onDieOrKnockout;
     }
 
     private static void onDieOrKnockout(NPC npc) {

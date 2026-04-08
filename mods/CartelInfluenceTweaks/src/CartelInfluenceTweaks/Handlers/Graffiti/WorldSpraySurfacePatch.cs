@@ -7,7 +7,7 @@ using Il2CppScheduleOne.Graffiti;
 using ScheduleOne.Graffiti;
 #endif
 
-namespace CartelInfluenceTweaks.Patches.Graffiti {
+namespace CartelInfluenceTweaks.Handlers.Graffiti {
 
   [HarmonyPatch(typeof(WorldSpraySurface))]
   internal static class WorldSpraySurfacePatch {

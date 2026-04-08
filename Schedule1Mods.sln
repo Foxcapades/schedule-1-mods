@@ -1,29 +1,29 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{13B967F5-1B22-4FA6-AEF5-51612979A449}") = "CartelInfluenceTweaks", "mods/CartelInfluenceTweaks/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{13B967F5-1B22-4FA6-AEF5-51612979A449}") = "CartelInfluenceTweaks", "mods/CartelInfluenceTweaks/CartelInfluenceTweaks.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{32F4908B-F530-4E0E-9CD6-D89473EE821A}") = "CopHealthModifier", "mods/CopHealthModifier/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{32F4908B-F530-4E0E-9CD6-D89473EE821A}") = "CopHealthModifier", "mods/CopHealthModifier/CopHealthModifier.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{43B2DA6D-2B83-4ECB-AD8A-538FD16D26C4}") = "AdjustableDayLength", "mods/AdjustableDayLength/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{43B2DA6D-2B83-4ECB-AD8A-538FD16D26C4}") = "AdjustableDayLength", "mods/AdjustableDayLength/AdjustableDayLength.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{39857026-BBAB-4D95-B383-68BE4639721F}") = "DisableDealBonuses", "mods/DisableDealBonuses/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{39857026-BBAB-4D95-B383-68BE4639721F}") = "DisableDealBonuses", "mods/DisableDealBonuses/DisableDealBonuses.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{D3CD6517-6DDF-4254-B180-C0DD87BC6C07}") = "DisableHotbarScroll", "mods/DisableHotbarScroll/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{D3CD6517-6DDF-4254-B180-C0DD87BC6C07}") = "DisableHotbarScroll", "mods/DisableHotbarScroll/DisableHotbarScroll.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{43F26F1C-A117-4E37-B82A-3438D3BC6BAA}") = "DonutMixFix", "mods/DonutMixFix/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{43F26F1C-A117-4E37-B82A-3438D3BC6BAA}") = "DonutMixFix", "mods/DonutMixFix/DonutMixFix.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{4943D58F-3B8B-48B8-B4C3-2DF1F56AAE87}") = "PlantGrowthModifiers", "mods/PlantGrowthModifiers/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{4943D58F-3B8B-48B8-B4C3-2DF1F56AAE87}") = "PlantGrowthModifiers", "mods/PlantGrowthModifiers/PlantGrowthModifiers.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{C7C1FC04-AD78-4075-A882-F88B5EE8B86F}") = "GunControl", "mods/GunControl/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{C7C1FC04-AD78-4075-A882-F88B5EE8B86F}") = "GunControl", "mods/GunControl/GunControl.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{8644F7CF-7BD7-4EA7-95F2-9EEFBE1F4324}") = "IllegalSeeds", "mods/IllegalSeeds/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{8644F7CF-7BD7-4EA7-95F2-9EEFBE1F4324}") = "IllegalSeeds", "mods/IllegalSeeds/IllegalSeeds.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{0F3DC711-3203-4A5C-B1BD-365E034C2214}") = "OscarsInventoryTweaks", "mods/OscarsInventoryTweaks/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{0F3DC711-3203-4A5C-B1BD-365E034C2214}") = "OscarsInventoryTweaks", "mods/OscarsInventoryTweaks/OscarsInventoryTweaks.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{CDEE1D7B-04FC-4BD0-A9D7-675FD2EEC6FB}") = "ObservantCops", "mods/ObservantCops/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{CDEE1D7B-04FC-4BD0-A9D7-675FD2EEC6FB}") = "ObservantCops", "mods/ObservantCops/ObservantCops.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecommendedPrice", "mods/RecommendedPrice/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecommendedPrice", "mods/RecommendedPrice/RecommendedPrice.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{B0D97353-EAD4-4DC6-8C29-536A3AB031B6}") = "TrashCapacityMultipliers", "mods/TrashCapacityMultipliers/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{B0D97353-EAD4-4DC6-8C29-536A3AB031B6}") = "TrashCapacityMultipliers", "mods/TrashCapacityMultipliers/TrashCapacityMultipliers.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

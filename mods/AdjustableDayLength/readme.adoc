@@ -1,3 +1,6 @@
 = Adjustable Day Length
 
-Adds a configurable multiplier to adjust speed at which plants grow.
+Allows adjusting the length of in-game days to be up to 10x faster or down to
+60x slower.
+
+The time adjustment also applies to growth speeds and equipment times.

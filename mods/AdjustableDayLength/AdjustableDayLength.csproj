@@ -2,7 +2,8 @@
   <Import Project="../../Schedule1Mods.csproj"/>
 
   <PropertyGroup>
-    <RootNamespace>DayLengthModifier</RootNamespace>
+    <Product>AdjustableDayLength</Product>
+    <RootNamespace>AdjustableDayLength</RootNamespace>
     <DefineConstants>$(DefineConstants);USE_ON_PLAYER</DefineConstants>
   </PropertyGroup>
 

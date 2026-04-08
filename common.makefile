@@ -23,7 +23,7 @@ endif
 
 INPUT_FILES := $(shell find src -type f -name '*.cs') $(shell find ../../lib/Fxcpds -type f -name '*.cs')
 
-BUILD_TARGET := bin/$(CONFIGURATION)/$(NET_PATH)/mod.dll
+BUILD_TARGET := bin/$(CONFIGURATION)/$(NET_PATH)/$(PROJECT_ID).dll
 OUTPUT_TARGET := $(TARGET_DIRECTORY)/$(OUTPUT_DLL)
 
 ZIP_NAME := $(PROJECT_ID)-$(CONFIGURATION)-v$(VERSION).zip
@@ -179,7 +179,7 @@ $(TS_TARGET_DIR)/manifest.json: ts-manifest.json $(TS_TARGET_DIR)
 		--arg version $(VERSION) \
 		--arg url "$(MOD_URL)" \
 		--argjson deps '[ "LavaGang-MelonLoader-0.7.2" ]' \
-		'.name = $$name | .version = $$version | .website_url = $$url | .dependencies = $$deps' \
+		'.name = $$name | .version_number = $$version | .website_url = $$url | .dependencies = $$deps' \
 		$< > $@
 
 $(TS_DLL): $(OUTPUT_TARGET) $(TS_TARGET_DIR)

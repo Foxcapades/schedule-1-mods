@@ -15,7 +15,8 @@ using ScheduleOne.PlayerScripts;
 
 [assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
 [assembly: MelonGame("TVGS", "Schedule I")]
-[assembly: MelonInfo(typeof(AdjustableDayLength.Mod), AdjustableDayLength.Mod.MOD_NAME, "1.1.0", "Foxcapades")]
+[assembly: MelonID("AdjustableDayLength")]
+[assembly: MelonInfo(typeof(AdjustableDayLength.Mod), AdjustableDayLength.Mod.MOD_NAME, "1.1.1", "Foxcapades")]
 
 namespace AdjustableDayLength {
   public class Mod: FxMod {
@@ -30,11 +31,11 @@ namespace AdjustableDayLength {
       var preferences = MelonPreferences.CreateCategory(MOD_NAME, MOD_NAME);
 
       modifier = preferences.CreateEntry(
-        identifier: "modifier",
+        identifier:   "modifier",
         display_name: "Day Length Multiplier",
-        description: "Valid range: 0.1 = 10x faster days - 60 = real world time",
+        description:   "Valid range: 0.1 = 10x faster days - 60 = real world time",
         default_value: 1f,
-        validator: new NumberValidator<float>(MIN_MULTIPLIER, MAX_MULTIPLIER)
+        validator:     new NumberValidator<float>(MIN_MULTIPLIER, MAX_MULTIPLIER)
       );
 
       if (getOldValue(out float value)) {
@@ -93,6 +94,9 @@ namespace AdjustableDayLength {
     [HarmonyPostfix]
     [HarmonyPatch(typeof(TimeManager), "Clean")]
     private static void TimeManagerClean() {
+      #if !RELEASE
+      Instance.LoggerInstance.Debug("attempting to set multiplier to {0}", 1f/modifier!.Value);
+      #endif
       TimeManager.Instance?.SetTimeSpeedMultiplier(1f/modifier!.Value);
     }
   }

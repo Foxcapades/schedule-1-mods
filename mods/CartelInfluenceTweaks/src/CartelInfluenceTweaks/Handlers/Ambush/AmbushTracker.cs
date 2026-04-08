@@ -14,7 +14,7 @@ using ScheduleOne.PlayerScripts;
 using System.Collections.Generic;
 #endif
 
-namespace CartelInfluenceTweaks.handlers.ambush {
+namespace CartelInfluenceTweaks.Handlers.Ambush {
 
   /// <summary>
   /// Tracks cartel goons remaining in an ambush.
@@ -70,7 +70,7 @@ namespace CartelInfluenceTweaks.handlers.ambush {
     }
 
     private void register() {
-      cartel.CartelGoonHandler.onDefeated += onGoonKnockout;
+      Cartel.CartelGoonHandler.onDefeated += onGoonKnockout;
 
       #if IL2CPP
       #elif MONO
@@ -79,7 +79,7 @@ namespace CartelInfluenceTweaks.handlers.ambush {
     }
 
     internal void finalize() {
-      cartel.CartelGoonHandler.onDefeated -= onGoonKnockout;
+      Cartel.CartelGoonHandler.onDefeated -= onGoonKnockout;
 
       #if IL2CPP
       #elif MONO
@@ -90,7 +90,7 @@ namespace CartelInfluenceTweaks.handlers.ambush {
     }
 
     private void onPlayerDied() {
-      Mod.pushState(region, State.PlayerDefated);
+      Mod.pushState(region, State.PlayerDefeated);
       finalize();
     }
 

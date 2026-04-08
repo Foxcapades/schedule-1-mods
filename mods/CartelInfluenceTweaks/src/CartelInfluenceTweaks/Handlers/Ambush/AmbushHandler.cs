@@ -15,11 +15,12 @@ using ScheduleOne.PlayerScripts;
 using System.Collections.Generic;
 #endif
 
-using CounterList = System.Collections.Generic.List<CartelInfluenceTweaks.handlers.ambush.AmbushTracker>;
+using CounterList = System.Collections.Generic.List<CartelInfluenceTweaks.Handlers.Ambush.AmbushTracker>;
 
-namespace CartelInfluenceTweaks.handlers.ambush {
+namespace CartelInfluenceTweaks.Handlers.Ambush {
 
   internal static class AmbushHandler {
+    // ReSharper disable once CollectionNeverQueried.Local
     private static readonly CounterList activeAmbushes = new CounterList(2);
 
     internal static void registerAmbush(
@@ -34,12 +35,12 @@ namespace CartelInfluenceTweaks.handlers.ambush {
       activeAmbushes.Remove(tracker);
     }
 
-    [HarmonyPatch(typeof(Ambush))]
+    [HarmonyPatch(typeof(Il2CppScheduleOne.Cartel.Ambush))]
     private static class AmbushPatch {
       [HarmonyPostfix]
       [HarmonyPatch("SpawnAmbush", typeof(Player), typeof(Il2CppStructArray<Vector3>))]
       static void SpawnAmbush(
-        Ambush __instance,
+        Il2CppScheduleOne.Cartel.Ambush __instance,
         List<CartelGoon> __result,
         Player target,
         Vector3[] potentialSpawnPoints

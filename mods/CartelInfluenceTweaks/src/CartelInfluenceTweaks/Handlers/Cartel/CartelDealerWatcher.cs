@@ -8,7 +8,7 @@ using Il2CppScheduleOne.Cartel;
 using ScheduleOne.Cartel;
 #endif
 
-namespace CartelInfluenceTweaks.Patches.Dealers {
+namespace CartelInfluenceTweaks.Handlers.Cartel {
   internal class CartelDealerWatcher {
     private readonly CartelDealer dealer;
     private readonly Action<object> remover;
@@ -33,7 +33,7 @@ namespace CartelInfluenceTweaks.Patches.Dealers {
 
     private void onDealImpl() {
       Mod.pushState(dealer.Region, State.CartelDeal);
-      Cartel.Instance.Influence.ChangeInfluence(dealer.Region, 0f);
+      Il2CppScheduleOne.Cartel.Cartel.Instance.Influence.ChangeInfluence(dealer.Region, 0f);
     }
 
     private void onDeathImpl() {

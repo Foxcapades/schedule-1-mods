@@ -3,7 +3,7 @@ using HarmonyLib;
 using System.Runtime.CompilerServices;
 
 #if IL2CPP
-using Il2CppScheduleOne.Cartel;
+using S1Cartel = Il2CppScheduleOne.Cartel;
 using Il2CppScheduleOne.Graffiti;
 using Il2CppScheduleOne.NPCs.Behaviour;
 #elif MONO
@@ -13,10 +13,10 @@ using ScheduleOne.NPCs.Behaviour;
 using System.Reflection;
 #endif
 
-namespace CartelInfluenceTweaks.Patches.Graffiti {
+namespace CartelInfluenceTweaks.Handlers.Graffiti {
 
   [HarmonyPatch(typeof(GraffitiBehaviour), nameof(GraffitiBehaviour.Disable))]
-  public static class GraffitiBehaviorPatch {
+  internal static class GraffitiBehaviorPatch {
 
     #if IL2CPP
 
@@ -87,7 +87,7 @@ namespace CartelInfluenceTweaks.Patches.Graffiti {
       FxMod.Instance.LoggerInstance.Debug("GraffitiBehavior.Disable.Postfix({0})", region);
       #endif
 
-      Cartel.Instance.Influence.ChangeInfluence(region, 1f);
+      S1Cartel.Cartel.Instance.Influence.ChangeInfluence(region, 1f);
 
       Mod.commonPostfix(region);
     }

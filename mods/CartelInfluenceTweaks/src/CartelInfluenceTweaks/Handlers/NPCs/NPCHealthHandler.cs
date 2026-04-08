@@ -7,7 +7,7 @@ using Il2CppScheduleOne.NPCs;
 using ScheduleOne.NPCs;
 #endif
 
-namespace CartelInfluenceTweaks.handlers.npcs {
+namespace CartelInfluenceTweaks.Handlers.NPCs {
   internal static class NPCHealthHandler {
     internal static event Action<NPC>? onDie;
     internal static event Action<NPC>? onKnockout;
