@@ -23,7 +23,7 @@ Project("{CDEE1D7B-04FC-4BD0-A9D7-675FD2EEC6FB}") = "ObservantCops", "mods/Obser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecommendedPrice", "mods/RecommendedPrice/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
-Project("{B0D97353-EAD4-4DC6-8C29-536A3AB031B6}") = "TrashCanCapacity", "mods/TrashCanCapacity/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
+Project("{B0D97353-EAD4-4DC6-8C29-536A3AB031B6}") = "TrashCapacityMultipliers", "mods/TrashCapacityMultipliers/mod.csproj", "{B6648785-D296-4FDC-BCA6-F4F9E68E9582}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

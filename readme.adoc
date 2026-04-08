@@ -4,23 +4,28 @@ A collection of tiny mods to tweak to the gameplay experience.
 
 == Mods
 
-=== link:CopHealthModifier/[Cop Health Modifier]
-
-Adds a configurable multiplier value to adjust police max health.
-
-[none]
-* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1691
-
-
-=== link:DayLengthModifier/[Day Length Modifier]
+=== link:mods/AdjustableDayLength/[Adjustable Day Length]
 
 Adds a configurable multiplier value to adjust game day length.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1799
 
+=== link:mods/CartelInfluenceTweaks/[Cartel Influence Tweaks]
 
-=== link:DisableDealBonuses/[Disable Deal Bonuses]
+Configurable influence gains and losses for player and cartel actions.
+
+[none]
+* Currently WIP
+
+=== link:mods/CopHealthModifier/[Cop Health Modifier]
+
+Adds a configurable multiplier value to adjust police max health.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1691
+
+=== link:mods/DisableDealBonuses/[Disable Deal Bonuses]
 
 Removes the bonus payments on deals for quality, curfew, quick delivery, and
 weather.
@@ -28,23 +33,52 @@ weather.
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1708
 
-
-=== link:DisableDealBonuses/[Disable Hotbar Scroll]
+=== link:mods/DisableDealBonuses/[Disable Hotbar Scroll]
 
 Disables the mouse wheel interaction with the inventory hotbar.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1739
 
-=== link:DonutMixFix/[Donut Mixing Fix]
+=== link:mods/DonutMixFix/[Donut Mixing Fix]
 
 Corrects the mixing interaction with `CalorieDense + CalorieDense`.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1604
 
+=== link:mods/GunControl/[Gun Control]
 
-=== link:GrowthSpeedModifier/[Plant Growth Modifiers]
+Marks guns and ammunition as illegal.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1657
+
+=== link:mods/IllegalSeeds/[Illegal Seeds]
+
+Marks coca and marijuana seeds as illegal.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1663
+
+=== link:mods/ObservantCops/[Observant Cops]
+
+Makes cops notice when the player is openly holding an illegal item.
+
+[none]
+* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1677
+
+=== link:mods/OscarsInventoryTweaks/[Oscar's Inventory Tweaks]
+
+Optionally adds growth additives, locker, ac unit, shelves, and closets to
+Oscar's shop inventory.
+
+[none]
+* Nexus Mods: https://www.nexusmods.com/schedule1/mods/1784
+* Thunderstore (Il2Cpp): https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksIl2Cpp
+* Thunderstore (Mono): https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksMono
+
+=== link:mods/PlantGrowthModifiers/[Plant Growth Modifiers]
 
 Adds configurable multiplier values to adjust the growth speed of different
 plant types.
@@ -52,41 +86,7 @@ plant types.
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1749
 
-
-=== link:GunControl/[Gun Control]
-
-Marks guns and ammunition as illegal.
-
-[none]
-* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1657
-
-
-=== link:IllegalSeeds/[Illegal Seeds]
-
-Marks coca and marijuana seeds as illegal.
-
-[none]
-* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1663
-
-
-=== link:ObservantCops/[Observant Cops]
-
-Makes cops notice when the player is openly holding an illegal item.
-
-[none]
-* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1677
-
-
-=== link:OscarsInventoryTweaks/[Oscar's Inventory Tweaks]
-
-Optionally adds growth additives, locker, ac unit, shelves, and closets to
-Oscar's shop inventory.
-
-[none]
-* On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1784
-
-
-=== link:RecommendedPrice/[Recommended Price]
+=== link:mods/RecommendedPrice/[Recommended Price]
 
 Adds configurable multiplier values to adjust the market price of the different
 drug types.
@@ -95,7 +95,7 @@ drug types.
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1654
 
 
-=== link:TrashCanCapacity/[Trash Can Capacity]
+=== link:mods/TrashCapacityMultipliers/[Trash Capacity Multipliers]
 
 Adjust trash can capacity.
 
