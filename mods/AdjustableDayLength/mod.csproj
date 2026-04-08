@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="../../lib/Fxcpds/Debug.cs" Condition="'$(LIFECYCLE)' != 'RELEASE'"/>
     <Compile Include="../../lib/Fxcpds/FxMod.cs"/>
     <Compile Include="../../lib/Fxcpds/NumberValidator.cs"/>
   </ItemGroup>

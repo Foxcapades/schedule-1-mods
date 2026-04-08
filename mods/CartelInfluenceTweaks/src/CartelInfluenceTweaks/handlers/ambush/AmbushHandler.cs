@@ -3,6 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 
 #if IL2CPP
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppScheduleOne.Cartel;
 using Il2CppScheduleOne.Map;
 using Il2CppScheduleOne.PlayerScripts;
@@ -36,7 +37,7 @@ namespace CartelInfluenceTweaks.handlers.ambush {
     [HarmonyPatch(typeof(Ambush))]
     private static class AmbushPatch {
       [HarmonyPostfix]
-      [HarmonyPatch("SpawnAmbush", typeof(Player), typeof(Vector3[]))]
+      [HarmonyPatch("SpawnAmbush", typeof(Player), typeof(Il2CppStructArray<Vector3>))]
       static void SpawnAmbush(
         Ambush __instance,
         List<CartelGoon> __result,
