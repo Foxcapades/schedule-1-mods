@@ -19,6 +19,8 @@ namespace Fxcpds {
     private static FxMod? instance;
     public static FxMod Instance => instance!;
 
+    public static MelonLogger.Instance Logger => instance!.LoggerInstance;
+
     #if USE_ON_MAIN || USE_SCENES
     protected const string SCENE_NAME_MAIN = "Main";
 
@@ -33,20 +35,33 @@ namespace Fxcpds {
     public bool InMainScene { get; private set; }
     #endif
 
-    #if USE_CONFIG_FILE
-    /// <summary>
-    /// Path to the mod-specific configuration file relative to the UserData
-    /// directory.  If the mod does not have a configuration file, this value
-    /// should be null.
-    /// </summary>
-    protected virtual string? configPath { get; }
+    #if USE_CONFIG_FILE && !USE_CONFIG
 
     /// <summary>
-    /// Expanded path to the mod specific configuration file.  If the mod does
-    /// not have a configuration file, this value will be null.
+    /// Path to the mod-specific configuration file relative to the UserData
+    /// directory.
     /// </summary>
-    public string? ConfigPath =>
-      configPath == null ? null : Path.Combine(MelonEnvironment.UserDataDirectory, configPath);
+    protected virtual string configPath { get; }
+
+    #endif
+
+    #if USE_CONFIG && !USE_CONFIG_FILE
+
+    /// <summary>
+    /// Path to the MelonLoader default configuration file.
+    /// </summary>
+    protected string configPath => "MelonPreferences.cfg";
+
+    #endif
+
+    #if USE_CONFIG || USE_CONFIG_FILE
+
+    /// <summary>
+    /// Expanded path to the mod configuration file.
+    /// </summary>
+    public string ConfigPath =>
+      Path.Combine(MelonEnvironment.UserDataDirectory, configPath);
+
     #endif
 
     public override void OnEarlyInitializeMelon() {
@@ -54,6 +69,7 @@ namespace Fxcpds {
     }
 
     #if USE_ON_PLAYER || USE_ON_PLAYER_LOCAL
+
     public override void OnInitializeMelon() {
       #if IL2CPP
       Player.onPlayerSpawned += DelegateSupport.ConvertDelegate<Action<Player>>(onPlayerSpawned);
@@ -61,9 +77,11 @@ namespace Fxcpds {
       Player.onPlayerSpawned += onPlayerSpawned;
       #endif
     }
+
     #endif
 
     #if  USE_ON_MAIN || USE_SCENES
+
     public override void OnSceneWasLoaded(int _, string sceneName) {
       Scene = sceneName;
       if (sceneName == SCENE_NAME_MAIN) {
@@ -74,13 +92,16 @@ namespace Fxcpds {
         #endif
       }
     }
+
     #endif
 
     #if USE_ON_MAIN
+
     public override void OnSceneWasInitialized(int _, string sceneName) {
       if (sceneName == SCENE_NAME_MAIN)
         onMainInitialized();
     }
+
     #endif
 
     #if USE_ON_MAIN || USE_SCENES
@@ -98,21 +119,27 @@ namespace Fxcpds {
     }
     #endif
 
-    #if USE_CONFIG_FILE
+    #if USE_CONFIG_FILE || USE_CONFIG
+
     public sealed override void OnPreferencesSaved(string filepath) {
-      if (configPath != null && filepath.EndsWith(configPath)) {
+      if (filepath.EndsWith(configPath)) {
+        #if !RELEASE
+        Logger.Debug("calling onModPreferencesSaved");
+        #endif
         onModPreferencesSaved();
       }
     }
 
     protected virtual void onModPreferencesSaved() {}
+
     #endif
 
     #if USE_ON_PLAYER || USE_ON_PLAYER_LOCAL
+
     private void onPlayerSpawned(Player player) {
       #if USE_ON_PLAYER_LOCAL
       #if !RELEASE
-      Instance.LoggerInstance.Debug("calling onLocalPlayerLoaded");
+      Logger.Debug("calling onLocalPlayerLoaded");
       #endif
       if (player.IsLocalPlayer) {
         onLocalPlayerLoaded(player);
@@ -120,11 +147,12 @@ namespace Fxcpds {
       #endif
       #if USE_ON_PLAYER
       #if !RELEASE
-      Instance.LoggerInstance.Debug("calling onPlayerLoaded");
+      Logger.Debug("calling onPlayerLoaded");
       #endif
       onPlayerLoaded(player);
       #endif
     }
+
     #endif
 
     #if USE_ON_PLAYER

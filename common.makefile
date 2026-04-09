@@ -172,7 +172,7 @@ $(TS_TARGET_DIR)/icon.png: docs/assets/ts-icon.png
 	@cp $< $@
 
 $(TS_TARGET_DIR)/README.md: readme.adoc $(TS_TARGET_DIR)
-	@sed 's/^= /# /g;s/^== /## /g;s/^=== /### /g;' $< > $@
+	@sed 's/^= /# /g;s/^== /## /g;s/^=== /### /g;s/^\*\*/    */g' $< > $@
 
 $(TS_TARGET_DIR)/manifest.json: ts-manifest.json $(TS_TARGET_DIR)
 	@jq --arg name $(PROJECT_ID)$(CONFIGURATION) \

@@ -56,10 +56,7 @@ namespace AdjustableDayLength {
       TimeManagerClean();
     }
 
-    private static string defaultMelonConfigPath =>
-      Path.Combine(MelonEnvironment.UserDataDirectory, "MelonPreferences.cfg");
-
-    private static bool getOldValue(out float value) {
+    private bool getOldValue(out float value) {
       value = 0f;
 
       if (getOldValue("DayLengthModifier", out float v1)) {
@@ -73,7 +70,7 @@ namespace AdjustableDayLength {
       return value > 0f;
     }
 
-    private static bool getOldValue(string category, out float value) {
+    private bool getOldValue(string category, out float value) {
       var cat = MelonPreferences.CreateCategory(category);
       var entry = cat.CreateEntry("modifier", value = 0f);
 
@@ -87,7 +84,7 @@ namespace AdjustableDayLength {
       }
 
       cat.DeleteEntry("modifier");
-      MelonPreferences.RemoveCategoryFromFile(defaultMelonConfigPath, cat.Identifier);
+      MelonPreferences.RemoveCategoryFromFile(ConfigPath, cat.Identifier);
 
       return value > 0;
     }

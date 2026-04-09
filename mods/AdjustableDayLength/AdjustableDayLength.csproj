@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Product>AdjustableDayLength</Product>
     <RootNamespace>AdjustableDayLength</RootNamespace>
-    <DefineConstants>$(DefineConstants);USE_ON_PLAYER</DefineConstants>
+    <DefineConstants>$(DefineConstants);USE_ON_PLAYER;USE_CONFIG</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

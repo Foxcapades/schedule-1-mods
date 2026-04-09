@@ -1,3 +1,11 @@
 = Cop Health Modifier
 
 Adds a configurable multiplier to adjust the health of cops.
+
+
+== Changelog
+
+* v1.1.0
+** Upgrade for S1 v0.4.4 compatibility
+* v1.0.0
+** Initial Release

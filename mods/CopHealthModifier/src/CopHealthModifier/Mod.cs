@@ -1,5 +1,6 @@
 using Fxcpds;
 using MelonLoader;
+
 #if IL2CPP
 using Il2CppScheduleOne.PlayerScripts;
 using Il2CppScheduleOne.Police;
@@ -8,8 +9,9 @@ using ScheduleOne.PlayerScripts;
 using ScheduleOne.Police;
 #endif
 
-[assembly: MelonInfo(typeof(CopHealthModifier.Mod), CopHealthModifier.Mod.MOD_NAME, "1.1.0", "Foxcapades")]
+[assembly: MelonID("CopHealthModifier")]
 [assembly: MelonGame("TVGS", "Schedule I")]
+[assembly: MelonInfo(typeof(CopHealthModifier.Mod), CopHealthModifier.Mod.MOD_NAME, "1.1.0", "Foxcapades")]
 
 #nullable enable
 namespace CopHealthModifier {
@@ -29,13 +31,15 @@ namespace CopHealthModifier {
         display_name: "Cop Health Multiplier",
         validator: new NumberValidator<float>(0.1f, float.MaxValue)
       );
+
+      base.OnInitializeMelon();
     }
 
     protected override void onLocalPlayerLoaded(Player player) {
       applyModifier();
     }
 
-    public override void OnPreferencesSaved() {
+    protected override void onModPreferencesSaved() {
       applyModifier();
     }
 
@@ -57,9 +61,17 @@ namespace CopHealthModifier {
         if (defaultCopHealth == 0) {
           defaultCopHealth = officer.Health.MaxHealth;
           newHealth = defaultCopHealth * mult;
+
+          #if !RELEASE
+          LoggerInstance.Debug("default cop health = {0}, new cop health = {1}", defaultCopHealth, newHealth);
+          #endif
         }
 
         if ((int)officer.Health.MaxHealth * 100 != (int)newHealth * 100) {
+          #if !RELEASE
+          LoggerInstance.Debug("updating cop {0} health to {1}", officer.fullName, newHealth);
+          #endif
+
           officer.Health.MaxHealth = newHealth;
           officer.Health.RestoreHealth();
         }

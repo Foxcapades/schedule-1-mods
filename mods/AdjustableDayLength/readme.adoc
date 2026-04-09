@@ -4,3 +4,20 @@ Allows adjusting the length of in-game days to be up to 10x faster or down to
 60x slower.
 
 The time adjustment also applies to growth speeds and equipment times.
+
+
+== Changelog
+
+* v1.1.2
+** Fix initializer call tree.
+* v1.1.1
+** Fix MelonID value.
+* v1.1.0
+** Internals upgrade.
+** Add Thunderstore build.
+* v1.0.2
+** Fix preference category name for compatibility with Mod Manager - Phone App
+* v1.0.1
+** Workaround for MelonLoader preference saving bug.
+* v1.0.0
+** Initial Release

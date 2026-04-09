@@ -10,6 +10,8 @@ Adds a configurable multiplier value to adjust game day length.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1799
+* Thunderstore (Il2Cpp): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthIl2Cpp
+* Thunderstore (Mono): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthMono
 
 === link:mods/CartelInfluenceTweaks/[Cartel Influence Tweaks]
 
@@ -24,6 +26,9 @@ Adds a configurable multiplier value to adjust police max health.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1691
+* Thunderstore (Il2Cpp): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierIl2Cpp
+* Thunderstore (Mono): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierMono
+
 
 === link:mods/DisableDealBonuses/[Disable Deal Bonuses]
 
