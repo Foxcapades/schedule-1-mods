@@ -111,11 +111,17 @@ namespace Fxcpds {
     #if USE_ON_PLAYER || USE_ON_PLAYER_LOCAL
     private void onPlayerSpawned(Player player) {
       #if USE_ON_PLAYER_LOCAL
+      #if !RELEASE
+      Instance.LoggerInstance.Debug("calling onLocalPlayerLoaded");
+      #endif
       if (player.IsLocalPlayer) {
         onLocalPlayerLoaded(player);
       }
       #endif
       #if USE_ON_PLAYER
+      #if !RELEASE
+      Instance.LoggerInstance.Debug("calling onPlayerLoaded");
+      #endif
       onPlayerLoaded(player);
       #endif
     }

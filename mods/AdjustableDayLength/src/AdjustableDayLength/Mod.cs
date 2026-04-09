@@ -13,10 +13,10 @@ using ScheduleOne.GameTime;
 using ScheduleOne.PlayerScripts;
 #endif
 
-[assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
-[assembly: MelonGame("TVGS", "Schedule I")]
 [assembly: MelonID("AdjustableDayLength")]
-[assembly: MelonInfo(typeof(AdjustableDayLength.Mod), AdjustableDayLength.Mod.MOD_NAME, "1.1.1", "Foxcapades")]
+[assembly: MelonGame("TVGS", "Schedule I")]
+[assembly: MelonInfo(typeof(AdjustableDayLength.Mod), AdjustableDayLength.Mod.MOD_NAME, "1.1.2", "Foxcapades")]
+[assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
 
 namespace AdjustableDayLength {
   public class Mod: FxMod {
@@ -38,12 +38,14 @@ namespace AdjustableDayLength {
         validator:     new NumberValidator<float>(MIN_MULTIPLIER, MAX_MULTIPLIER)
       );
 
+      modifier!.OnEntryValueChanged.Subscribe(onPreferenceSaved);
+
       if (getOldValue(out float value)) {
         LoggerInstance.Msg("copying day length multiplier {0} from an older mod version config", value);
-        modifier!.Value = value;
+        modifier.Value = value;
       }
 
-      modifier!.OnEntryValueChanged.Subscribe(onPreferenceSaved);
+      base.OnInitializeMelon();
     }
 
     protected override void onPlayerLoaded(Player _) {
@@ -56,7 +58,6 @@ namespace AdjustableDayLength {
 
     private static string defaultMelonConfigPath =>
       Path.Combine(MelonEnvironment.UserDataDirectory, "MelonPreferences.cfg");
-
 
     private static bool getOldValue(out float value) {
       value = 0f;
