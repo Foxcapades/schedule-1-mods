@@ -26,4 +26,8 @@
     <Compile Include="../../lib/Fxcpds/FxMod.cs"/>
     <Compile Include="../../lib/Fxcpds/NumberValidator.cs"/>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="docs\" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,3 @@
 {
-  "name": "",
-  "description": "",
-  "version_number": "",
-  "dependencies": [ "LavaGang-MelonLoader-0.7.2" ],
-  "website_url": ""
+  "description": "Change the trash can and grabber capacity values to your liking."
 }

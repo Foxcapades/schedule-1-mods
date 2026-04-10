@@ -1,0 +1,11 @@
+= Trash Capacity Multipliers
+
+Change the trash can and grabber capacity values to your liking.
+
+
+== Changelogs
+
+* v1.1.0
+** Add capacity option for trash grabber.
+* v1.0.0
+** Trash can capacity option.

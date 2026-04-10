@@ -11,7 +11,7 @@ Adds a configurable multiplier value to adjust game day length.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1799
-* Thunderstore
+* Thunderstore:
 ** Il2Cpp: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthIl2Cpp
 ** Mono: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthMono
 
@@ -127,3 +127,6 @@ Adjust trash can capacity.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1745
+* On Thunderstore:
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/TrashCapacityMultipliersIl2Cpp/
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/TrashCapacityMultipliersMono/
