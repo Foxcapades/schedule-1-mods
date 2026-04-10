@@ -2,3 +2,11 @@
 
 Marks base-game firearms as illegal.  This not only impacts body searches and
 arrests, but also prevents guns and ammunition from being sold at the pawn shop.
+
+
+== Changelog
+
+* v1.1.0
+** Update for Schedule I v0.4.4 compatibility
+* v1.0.0
+** Initial Release

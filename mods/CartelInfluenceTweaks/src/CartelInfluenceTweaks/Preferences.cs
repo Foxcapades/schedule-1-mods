@@ -1,3 +1,4 @@
+using CartelInfluenceTweaks.state;
 using Fxcpds;
 using MelonLoader;
 using System;
@@ -10,60 +11,65 @@ namespace CartelInfluenceTweaks {
     /// Cartel influence percent lost when a player cleans/removes cartel
     /// created graffiti.
     /// </summary>
-    public float graffitiRemovalChange => prefs[(int) State.GraffitiCleaned].Value;
+    public float graffitiRemovalChange => prefs[(int) ActionType.GraffitiCleaned].Value;
 
     /// <summary>
     /// Cartel influence percent lost when a player creates new graffiti in a
     /// region with cartel influence.
     /// </summary>
-    public float graffitiCreationChange => prefs[(int) State.GraffitiCreated].Value;
+    public float graffitiCreationChange => prefs[(int) ActionType.GraffitiCreated].Value;
 
     /// <summary>
     /// Cartel influence percent lost when a player interrupts a cartel thug
     /// spray-painting new graffiti.
     /// </summary>
-    public float graffitiInterruptedChange => prefs[(int) State.GraffitiInterrupted].Value;
+    public float graffitiInterruptedChange => prefs[(int) ActionType.GraffitiInterrupted].Value;
 
     /// <summary>
     /// Cartel influence percent lost when a player kills or knocks out a cartel
     /// dealer.
     /// </summary>
-    public float dealerKilledChange => prefs[(int) State.DealerDefeated].Value;
+    public float dealerKilledChange => prefs[(int) ActionType.DealerDefeated].Value;
 
     /// <summary>
     /// Cartel influence percent lost when a player kills or knocks out all
     /// cartel thugs in an ambush.
     /// </summary>
-    public float ambushKilledChange => prefs[(int) State.AmbushDefeated].Value;
+    public float ambushKilledChange => prefs[(int) ActionType.AmbushDefeated].Value;
 
     /// <summary>
     /// Cartel influence percent lost when a player gains a new customer in
     /// cartel territory.
     /// </summary>
-    public float customerGainedChange => prefs[(int) State.CustomerStolen].Value;
+    public float customerGainedChange => prefs[(int) ActionType.CustomerStolen].Value;
 
     /// <summary>
     /// Cartel influence percent lost when a player completes a deal in cartel
     /// territory.
     /// </summary>
-    public float playerDealChange => prefs[(int) State.PlayerDeal].Value;
+    public float playerDealChange => prefs[(int) ActionType.PlayerDeal].Value;
 
     /// <summary>
     /// Cartel influence percent lost when a player employed dealer completes
     /// a deal in cartel territory.
     /// </summary>
-    public float playerProxyDealChange => prefs[(int) State.PlayerProxyDeal].Value;
+    public float playerProxyDealChange => prefs[(int) ActionType.PlayerProxyDeal].Value;
 
     /// <summary>
     /// Cartel influence percent gained when a cartel member creates new
     /// graffiti.
     /// </summary>
-    public float cartelGraffitiChange => prefs[(int) State.CartelGraffiti].Value;
+    public float cartelGraffitiChange => prefs[(int) ActionType.CartelGraffiti].Value;
 
     /// <summary>
     /// Cartel influence percent gained when a cartel dealer completes a deal.
     /// </summary>
-    public float cartelDealChange => prefs[(int) State.CartelDeal].Value;
+    public float cartelDealChange => prefs[(int) ActionType.CartelDeal].Value;
+
+    /// <summary>
+    /// Cartel influence percent gained when a cartel thug kills a player.
+    /// </summary>
+    public float playerKilledChange => prefs[(int) ActionType.PlayerDefeated].Value;
 
     public void init(Mod mod) {
       var playerActions = MelonPreferences.CreateCategory(
@@ -80,9 +86,9 @@ namespace CartelInfluenceTweaks {
 
       var validator = new NumberValidator<float>(0f, 100f);
 
-      prefs = new MelonPreferences_Entry<float>[Enum.GetValues(typeof(State)).Length];
+      prefs = new MelonPreferences_Entry<float>[Enum.GetValues(typeof(ActionType)).Length];
 
-      prefs[(int) State.GraffitiCleaned] = playerActions.CreateEntry(
+      prefs[(int) ActionType.GraffitiCleaned] = playerActions.CreateEntry(
         identifier: "graffitiRemovalModifier",
         default_value: 5f,
         display_name: "Graffiti Removal",
@@ -91,7 +97,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.GraffitiCreated] = playerActions.CreateEntry(
+      prefs[(int) ActionType.GraffitiCreated] = playerActions.CreateEntry(
         identifier: "graffitiCreationModifier",
         default_value: 5f,
         display_name: "Graffiti Creation",
@@ -100,7 +106,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.GraffitiInterrupted] = playerActions.CreateEntry(
+      prefs[(int) ActionType.GraffitiInterrupted] = playerActions.CreateEntry(
         identifier: "graffitiInterruptModifier",
         default_value: 10f,
         display_name: "Graffiti Interrupt",
@@ -109,7 +115,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.DealerDefeated] = playerActions.CreateEntry(
+      prefs[(int) ActionType.DealerDefeated] = playerActions.CreateEntry(
         identifier: "dealerKillModifier",
         default_value: 10f,
         display_name: "Dealer Defeated",
@@ -118,7 +124,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.AmbushDefeated] = playerActions.CreateEntry(
+      prefs[(int) ActionType.AmbushDefeated] = playerActions.CreateEntry(
         identifier: "ambushKillModifier",
         default_value: 10f,
         display_name: "Ambush Defeated",
@@ -127,7 +133,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.CustomerStolen] = playerActions.CreateEntry(
+      prefs[(int) ActionType.CustomerStolen] = playerActions.CreateEntry(
         identifier: "customerGainedModifier",
         default_value: 10f,
         display_name: "New Customer",
@@ -136,7 +142,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.PlayerDeal] = playerActions.CreateEntry(
+      prefs[(int) ActionType.PlayerDeal] = playerActions.CreateEntry(
         identifier: "playerDealModifier",
         default_value: 0f,
         display_name: "Player Deal Completed",
@@ -145,7 +151,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.PlayerProxyDeal] = playerActions.CreateEntry(
+      prefs[(int) ActionType.PlayerProxyDeal] = playerActions.CreateEntry(
         identifier: "playerProxyDealModifier",
         default_value: 0f,
         display_name: "Employee Deal Completed",
@@ -154,7 +160,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.CartelGraffiti] = cartelActions.CreateEntry(
+      prefs[(int) ActionType.CartelGraffiti] = cartelActions.CreateEntry(
         identifier: "cartelGraffitiModifier",
         default_value: 0f,
         display_name: "Create Graffiti",
@@ -163,7 +169,7 @@ namespace CartelInfluenceTweaks {
         validator: validator
       );
 
-      prefs[(int) State.CartelDeal] = cartelActions.CreateEntry(
+      prefs[(int) ActionType.CartelDeal] = cartelActions.CreateEntry(
         identifier: "cartelDealModifier",
         default_value: 0f,
         display_name: "Deal Completed",
@@ -171,6 +177,17 @@ namespace CartelInfluenceTweaks {
           " makes a deal.",
         validator: validator
       );
+
+      prefs[(int) ActionType.PlayerDefeated] = cartelActions.CreateEntry(
+        identifier: "playerDefeatModifier",
+        default_value: 0f,
+        display_name: "Player Killed",
+        description: "Percent of cartel influence gained when the cartel" +
+        " kills a player.",
+        validator: validator
+      );
     }
+
+    public float this[ActionType type] => prefs[(int) type].Value;
   }
 }

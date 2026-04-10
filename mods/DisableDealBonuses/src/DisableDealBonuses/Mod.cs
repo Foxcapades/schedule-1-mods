@@ -6,8 +6,8 @@ using Il2CppScheduleOne.Economy;
 using ScheduleOne.Economy;
 #endif
 
-[assembly: MelonInfo(typeof(DisableDealBonuses.Mod), DisableDealBonuses.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
+[assembly: MelonInfo(typeof(DisableDealBonuses.Mod), DisableDealBonuses.Mod.MOD_NAME, "1.0.0", "Foxcapades")]
 
 #nullable enable
 namespace DisableDealBonuses {

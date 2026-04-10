@@ -1,3 +1,3 @@
-= Schedule I - Disable Deal Bonuses
+= Disable Deal Bonuses
 
 Disables bonuses for weather, curfew, quick delivery, and quality from deals.

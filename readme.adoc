@@ -10,8 +10,9 @@ Adds a configurable multiplier value to adjust game day length.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1799
-* Thunderstore (Il2Cpp): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthIl2Cpp
-* Thunderstore (Mono): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthMono
+* Thunderstore
+** Il2Cpp: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthIl2Cpp
+** Mono: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthMono
 
 === link:mods/CartelInfluenceTweaks/[Cartel Influence Tweaks]
 
@@ -26,8 +27,9 @@ Adds a configurable multiplier value to adjust police max health.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1691
-* Thunderstore (Il2Cpp): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierIl2Cpp
-* Thunderstore (Mono): https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierMono
+* Thunderstore
+** Il2Cpp: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierIl2Cpp
+** Mono: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierMono
 
 
 === link:mods/DisableDealBonuses/[Disable Deal Bonuses]
@@ -58,6 +60,10 @@ Marks guns and ammunition as illegal.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1657
+* On Thunderstore:
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/GunControlMono/
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/GunControlIl2Cpp/
+
 
 === link:mods/IllegalSeeds/[Illegal Seeds]
 
@@ -80,8 +86,9 @@ Oscar's shop inventory.
 
 [none]
 * Nexus Mods: https://www.nexusmods.com/schedule1/mods/1784
-* Thunderstore (Il2Cpp): https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksIl2Cpp
-* Thunderstore (Mono): https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksMono
+* Thunderstore
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksIl2Cpp
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksMono
 
 === link:mods/PlantGrowthModifiers/[Plant Growth Modifiers]
 

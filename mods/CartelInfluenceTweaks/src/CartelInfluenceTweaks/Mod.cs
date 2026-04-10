@@ -1,3 +1,4 @@
+using CartelInfluenceTweaks.state;
 using Fxcpds;
 using MelonLoader;
 
@@ -20,7 +21,7 @@ namespace CartelInfluenceTweaks {
   public class Mod: FxMod {
     public const string MOD_NAME = "Cartel Influence Tweaks";
 
-    private static readonly StateStack states = new StateStack();
+    private static readonly ActionStack Actions = new ActionStack();
 
     internal static Preferences preferences;
 
@@ -30,18 +31,18 @@ namespace CartelInfluenceTweaks {
       preferences.init(this); ;
     }
 
-    internal static void pushState(EMapRegion region, State state) {
+    internal static void pushState(EMapRegion region, InfluenceAction action) {
       #if !RELEASE
-      Instance.LoggerInstance.Debug("Mod.pushState(region: {0}, state: {1})", region, state);
+      Instance.LoggerInstance.Debug("Mod.pushState(region: {0}, state: {1})", region, action);
       #endif
-      states.push(region, state);
+      Actions.push(region, action);
     }
 
-    internal static (State, bool) popState(EMapRegion region) {
+    internal static (InfluenceAction, bool) popState(EMapRegion region) {
       #if !RELEASE
       Instance.LoggerInstance.Debug("Mod.popState(region: {0})", region);
       #endif
-      return states.remove(region);
+      return Actions.remove(region);
     }
 
     internal static bool shouldListen() =>

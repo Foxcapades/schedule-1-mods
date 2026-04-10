@@ -1,4 +1,4 @@
-= Schedule I Donut Mixing Fix
+= Donut Mixing Fix
 
 Adjusts the mixing reaction of calorie-dense + calorie-dense to _replace_ the
 calorie-dense effect with the explosive effect to align with the behavior of all

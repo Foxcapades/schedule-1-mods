@@ -1,6 +1,5 @@
 using Fxcpds;
 using MelonLoader;
-using System.Diagnostics;
 #if IL2CPP
 using Il2CppScheduleOne;
 using Il2CppScheduleOne.DevUtilities;
@@ -11,7 +10,7 @@ using ScheduleOne.DevUtilities;
 using ScheduleOne.Core.Items.Framework;
 #endif
 
-[assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
+[assembly: MelonID("GunControl")]
 [assembly: MelonInfo(typeof(GunControl.Mod), GunControl.Mod.MOD_NAME, "1.1.0", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
 

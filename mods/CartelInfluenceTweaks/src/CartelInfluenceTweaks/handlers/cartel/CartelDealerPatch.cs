@@ -1,0 +1,48 @@
+using CartelInfluenceTweaks.state;
+using Fxcpds;
+using HarmonyLib;
+using System.Collections;
+
+#if IL2CPP
+using Il2CppScheduleOne.Cartel;
+#elif MONO
+using ScheduleOne.Cartel;
+#endif
+
+namespace CartelInfluenceTweaks.handlers.cartel {
+
+  [HarmonyPatch(typeof(CartelDealer))]
+  internal static class CartelDealerPatch {
+
+    private static readonly ArrayList dealerActions = new ArrayList(8);
+
+    [HarmonyPostfix]
+    [HarmonyPatch("Start")]
+    static void StartPostfix(CartelDealer __instance) {
+      #if !RELEASE
+      FxMod.Logger.Debug("CartelDealer.Start.Postfix({0})", __instance);
+      #endif
+
+      dealerActions.Add(new CartelDealerWatcher(__instance, dealerActions.Remove));
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch("DiedOrKnockedOut")]
+    static void DiedPrefix(CartelDealer __instance) {
+      #if !RELEASE
+      FxMod.Logger.Debug("CartelDealer.DiedOrKnockedOut.Prefix({0})", __instance.Region);
+      #endif
+      if (Mod.shouldListen())
+        Mod.pushState(__instance.Region, InfluenceAction.DealerDefeated);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch("DiedOrKnockedOut")]
+    static void DiedPostfix(CartelDealer __instance) {
+      #if !RELEASE
+      FxMod.Logger.Debug("CartelDealer.DiedOrKnockedOut.Postfix({0})", __instance.Region);
+      #endif
+      Mod.commonPostfix(__instance.Region);
+    }
+  }
+}
