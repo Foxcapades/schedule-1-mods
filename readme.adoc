@@ -27,7 +27,7 @@ Adds a configurable multiplier value to adjust police max health.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1691
-* Thunderstore
+* On Thunderstore:
 ** Il2Cpp: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierIl2Cpp
 ** Mono: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/CopHealthModifierMono
 
@@ -39,6 +39,10 @@ weather.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1708
+* On Thunderstore:
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/DisableDealBonusesIl2Cpp/
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/DisableDealBonusesMono/
+
 
 === link:mods/DisableDealBonuses/[Disable Hotbar Scroll]
 
@@ -53,6 +57,9 @@ Corrects the mixing interaction with `CalorieDense + CalorieDense`.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1604
+* On Thunderstore:
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/DonutMixFixIl2Cpp/
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/DonutMixFixMono/
 
 === link:mods/GunControl/[Gun Control]
 
@@ -71,6 +78,9 @@ Marks coca and marijuana seeds as illegal.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1663
+* On Thunderstore:
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/IllegalSeedsIl2Cpp/
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/IllegalSeedsMono/
 
 === link:mods/ObservantCops/[Observant Cops]
 
@@ -78,6 +88,9 @@ Makes cops notice when the player is openly holding an illegal item.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1677
+* On Thunderstore:
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/ObservantCopsIl2Cpp/
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/ObservantCopsMono/
 
 === link:mods/OscarsInventoryTweaks/[Oscar's Inventory Tweaks]
 
