@@ -9,8 +9,4 @@
   <ItemGroup>
     <Compile Include="../../lib/Fxcpds/FxMod.cs"/>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="docs\" />
-  </ItemGroup>
 </Project>

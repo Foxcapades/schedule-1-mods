@@ -8,5 +8,6 @@
 
   <ItemGroup>
     <Compile Include="../../lib/Fxcpds/FxMod.cs"/>
+    <Compile Include="../../lib/Fxcpds/Debug.cs" Condition="'$(Lifecycle)' != 'RELEASE'"/>
   </ItemGroup>
 </Project>

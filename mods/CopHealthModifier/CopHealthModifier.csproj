@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Compile Include="../../lib/Fxcpds/FxMod.cs"/>
-    <Compile Include="../../lib/Fxcpds/Debug.cs"/>
+    <Compile Include="../../lib/Fxcpds/Debug.cs" Condition="'$(Lifecycle)' != 'RELEASE'"/>
     <Compile Include="../../lib/Fxcpds/NumberValidator.cs"/>
   </ItemGroup>
 </Project>
