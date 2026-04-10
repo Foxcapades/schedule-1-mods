@@ -1,4 +1,5 @@
 = Schedule I Mods
+:toc: preamble
 
 A collection of tiny mods to tweak to the gameplay experience.
 
