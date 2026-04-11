@@ -1,17 +1,18 @@
 <Project>
   <PropertyGroup>
-    <Configuration>Il2Cpp</Configuration>
-<!--    <Configuration>Mono</Configuration>-->
+    <!--    <Configuration>Il2Cpp</Configuration>-->
+    <Configuration>Mono</Configuration>
+    <DefineConstants>$(DefineConstants);$(Lifecycle)</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Il2Cpp'">
-    <S1Path>/path/to/steamapps/common/Schedule I</S1Path>
+    <S1Path>/path/to/Schedule_I_IL2CPP</S1Path>
     <MelonPath>$(S1Path)/MelonLoader/net6</MelonPath>
     <AssembliesPath>$(S1Path)/MelonLoader/Il2CppAssemblies</AssembliesPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Mono'">
-    <S1Path>/path/to/steamapps/common/Schedule I</S1Path>
+    <S1Path>/path/to/Schedule_I_Mono</S1Path>
     <MelonPath>$(S1Path)/MelonLoader/net35</MelonPath>
     <AssembliesPath>$(S1Path)/Schedule I_Data/Managed</AssembliesPath>
   </PropertyGroup>

@@ -5,6 +5,9 @@ Change the trash can and grabber capacity values to your liking.
 
 == Changelogs
 
+* v1.1.1
+** Correct rounding issue causing non-empty trash grabbers to show 0% while
+   containing a small amount of trash.
 * v1.1.0
 ** Add capacity option for trash grabber.
 * v1.0.0

@@ -20,5 +20,5 @@ install:
 .PHONY: clean-all
 clean-all:
 	@for project in $(PROJECTS); do \
-		rm -rf "mods/$${project}/bin" "mods/$${project}/obj" "mods/$${project}/target"; \
+		rm -rf "mods/$${project}/bin" "mods/$${project}/obj"; \
 	done

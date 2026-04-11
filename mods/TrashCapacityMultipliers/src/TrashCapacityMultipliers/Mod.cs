@@ -20,7 +20,7 @@ using System;
 #endif
 
 [assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default)]
-[assembly: MelonInfo(typeof(TrashCapacity.Mod), TrashCapacity.Mod.MOD_NAME, "1.1.0", "Foxcapades")]
+[assembly: MelonInfo(typeof(TrashCapacity.Mod), TrashCapacity.Mod.MOD_NAME, "1.1.1", "Foxcapades")]
 [assembly: MelonGame("TVGS", "Schedule I")]
 
 namespace TrashCapacity {
@@ -76,7 +76,11 @@ namespace TrashCapacity {
     private static class GrabberPatch {
       // ReSharper disable once UnusedMember.Local
       static int Postfix(int result) {
-        return Mathf.FloorToInt(result / grabberMultiplier!.Value);
+        var value = result / grabberMultiplier!.Value;
+
+        return value > 0f && value < 1f
+          ? 1
+          : Mathf.FloorToInt(value);
       }
     }
 

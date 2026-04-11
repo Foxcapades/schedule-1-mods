@@ -1,3 +1,15 @@
-= Schedule I - Adjustable Recommended Price
+= Adjustable Recommended Price
 
-Allows adjusting the recommended price for products.
+Allows adjusting the recommended/market price of product types by a configurable
+multiplier value.
+
+== Changelogs
+
+* v1.1.2
+** Fix preferences save behavior to not override customized asking prices.
+* v1.1.1
+** Adjust preferences save behavior to change asking prices in products app.
+* v1.1.0
+** Update for Schedule I v0.4.4 breaking changes
+* v1.0.0
+** Initial Release

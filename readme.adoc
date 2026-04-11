@@ -15,6 +15,7 @@ Adds a configurable multiplier value to adjust game day length.
 ** Il2Cpp: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthIl2Cpp
 ** Mono: https://new.thunderstore.io/c/schedule-i/p/Foxcapades/AdjustableDayLengthMono
 
+
 === link:mods/CartelInfluenceTweaks/[Cartel Influence Tweaks]
 
 Configurable influence gains and losses for player and cartel actions.
@@ -45,12 +46,13 @@ weather.
 ** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/DisableDealBonusesMono/
 
 
-=== link:mods/DisableDealBonuses/[Disable Hotbar Scroll]
+=== link:mods/DisableHotbarScroll/[Disable Hotbar Scroll]
 
 Disables the mouse wheel interaction with the inventory hotbar.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1739
+
 
 === link:mods/DonutMixFix/[Donut Mixing Fix]
 
@@ -61,6 +63,7 @@ Corrects the mixing interaction with `CalorieDense + CalorieDense`.
 * On Thunderstore:
 ** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/DonutMixFixIl2Cpp/
 ** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/DonutMixFixMono/
+
 
 === link:mods/GunControl/[Gun Control]
 
@@ -83,6 +86,7 @@ Marks coca and marijuana seeds as illegal.
 ** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/IllegalSeedsIl2Cpp/
 ** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/IllegalSeedsMono/
 
+
 === link:mods/ObservantCops/[Observant Cops]
 
 Makes cops notice when the player is openly holding an illegal item.
@@ -92,6 +96,7 @@ Makes cops notice when the player is openly holding an illegal item.
 * On Thunderstore:
 ** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/ObservantCopsIl2Cpp/
 ** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/ObservantCopsMono/
+
 
 === link:mods/OscarsInventoryTweaks/[Oscar's Inventory Tweaks]
 
@@ -104,6 +109,7 @@ Oscar's shop inventory.
 ** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksIl2Cpp
 ** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/OscarsInventoryTweaksMono
 
+
 === link:mods/PlantGrowthModifiers/[Plant Growth Modifiers]
 
 Adds configurable multiplier values to adjust the growth speed of different
@@ -112,6 +118,7 @@ plant types.
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1749
 
+
 === link:mods/RecommendedPrice/[Recommended Price]
 
 Adds configurable multiplier values to adjust the market price of the different
@@ -119,6 +126,9 @@ drug types.
 
 [none]
 * On Nexus Mods: https://www.nexusmods.com/schedule1/mods/1654
+* On Thunderstore:
+** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/RecommendedPriceIl2Cpp/
+** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/RecommendedPriceMono/
 
 
 === link:mods/TrashCapacityMultipliers/[Trash Capacity Multipliers]
@@ -130,3 +140,17 @@ Adjust trash can capacity.
 * On Thunderstore:
 ** Il2Cpp: https://thunderstore.io/c/schedule-i/p/Foxcapades/TrashCapacityMultipliersIl2Cpp/
 ** Mono: https://thunderstore.io/c/schedule-i/p/Foxcapades/TrashCapacityMultipliersMono/
+
+
+== Development
+
+=== Setup
+
+==== Environment Variables
+
+`INSTALL_DIRECTORY`::
+Path to the working copy of Schedule I.  Used to install debug mod versions for
+testing.
+
+`NEXUS_API_KEY`::
+Used for automated mod uploads to Nexus.
